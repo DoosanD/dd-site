@@ -14,7 +14,7 @@ get_header();
 <main id="primary" class="site-main">
 
     <section class="home-section hero-section">
-        <h1>TESTING AREA</h1>
+        <h1><?= CFS()->get('hero_title'); ?></h1>
     </section>
 
 </main><!-- #main -->
