@@ -1,3 +1,46 @@
-html{
-	background: red;
+:root {
+	--PRIMARY-COLOR:#FFF;
+	--SECONDARY-COLOR:#000;
+	--FONT-FAMILY:'Montserrat';
+}
+*, *::before, *::after {
+	box-sizing: border-box;
+}  
+section,
+footer {
+	float: left;
+	width: 100%;
+}
+html,
+body {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	font-size: 100%;
+	line-height: 1.4;
+}
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body span{
+	padding: 0px;
+	margin: 0px;
+	font-family: var(--FONT-FAMILY), sans-serif;
+}
+body ul,
+body ol,
+body li,
+body p{
+	margin: 0px;
+	padding: 0px;
+	font-family: var(--FONT-FAMILY)!important; 
+}
+body a {
+	font-family: var(--FONT-FAMILY);
+}
+.container {
+	padding-left: 0!important;
+	padding-right: 0!important;
 }

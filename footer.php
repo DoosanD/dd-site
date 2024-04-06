@@ -14,7 +14,10 @@
 
 <footer id="colophon" class="site-footer">
 	<div class="site-info">
-		<p class="container col-md-4">Footer</p>
+		<div class="container">
+			<div class="footer-left col-md-6">Footer CP</div>
+			<div class="footer-right col-md-6">Footer CP</div>
+		</div>
 	</div><!-- .site-info -->
 </footer><!-- #colophon -->
 </div><!-- #page -->

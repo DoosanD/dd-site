@@ -14,7 +14,9 @@ get_header();
 <main id="primary" class="site-main">
 
     <section class="home-section hero-section">
-        <h1><?= CFS()->get('hero_title'); ?></h1>
+        <div class="container">
+            <h1><?= CFS()->get('hero_title'); ?></h1>
+        </div>
     </section>
 
 </main><!-- #main -->

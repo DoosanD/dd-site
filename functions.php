@@ -10,7 +10,7 @@
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('_S_VERSION', '1.0.0');
+	define('_S_VERSION', '1.0.4');
 }
 
 /**
@@ -143,6 +143,7 @@ add_action('widgets_init', 'd_theme_widgets_init');
  */
 function d_theme_scripts()
 {
+	$alwayssameversion = null;
 	wp_enqueue_style('d-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('d-theme-style', 'rtl', 'replace');
 
@@ -155,6 +156,8 @@ function d_theme_scripts()
 
 	wp_enqueue_style('home-css', get_template_directory_uri() . '/assets/css/home.css', array(), _S_VERSION);
 
+	//Custom Font
+	wp_enqueue_style('Montserrat', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap', array(), $alwayssameversion);
 
 	wp_enqueue_style('header-footer-css', get_template_directory_uri() . '/assets/css/header-footer.css', array(), _S_VERSION);
 	wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.css', array(), _S_VERSION);
