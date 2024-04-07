@@ -1,0 +1,11 @@
+ul.nav-menu {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+.nav-menu li:not(:last-child) {
+    margin-right: 20px;
+}
+nav#site-navigation {
+    background: #fff;
+}
