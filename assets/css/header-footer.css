@@ -1,3 +1,12 @@
+:root {
+    --primary-color: #FFF;
+    --secondary-color: #000;
+}
+.--d-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 ul.nav-menu {
     display: flex;
     justify-content: center;
@@ -6,6 +15,13 @@ ul.nav-menu {
 .nav-menu li:not(:last-child) {
     margin-right: 20px;
 }
+.site-header,
 nav#site-navigation {
-    background: #fff;
+    background-color: var(--secondary-color);
+}
+.navbar-default {
+    border-color: var(--secondary-color)!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
