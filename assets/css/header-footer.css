@@ -19,6 +19,12 @@ ul.nav-menu {
 nav#site-navigation {
     background-color: var(--secondary-color);
 }
+nav#site-navigation {
+    -webkit-box-shadow: inset 0 1px 0 hsla(0,0%,100%,.4), inset 0 4px 0 #000, inset 0 5px 0 hsla(0,0%,100%,.4);
+    box-shadow: inset 0 1px 0 hsla(0,0%,100%,.4), inset 0 4px 0 #000, inset 0 5px 0 hsla(0,0%,100%,.4);
+    margin-top: 20px;
+    padding-top: 20px;
+}
 .navbar-default {
     border-color: var(--secondary-color)!important;
     display: flex;
