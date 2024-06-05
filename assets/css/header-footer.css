@@ -38,25 +38,21 @@ nav#site-navigation {
     font-weight: 600;
     font-size: 20px;
     transition: 0.3s;
-}
-#primary-menu li a:hover {
 
-}
-#primary-menu li a {
-  background-image: linear-gradient(
+    background-image: linear-gradient(
     to right,
     #2c38bf,
     #8627a3 50%,
     #FFF 50%
-  );
-  background-size: 200% 100%;
-  background-position: -100%;
-  display: inline-block;
-  padding: 5px 0;
-  position: relative;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.3s ease-in-out;
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
 }
 
 #primary-menu li a:before {
