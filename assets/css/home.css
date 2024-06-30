@@ -44,3 +44,60 @@ body a {
 	padding-left: 0!important;
 	padding-right: 0!important;
 }
+/* HERO SECTION */
+section.home-section.hero-section {
+	padding: 30px 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 50%);
+}
+.dd-hero-article {
+	color: #000;
+    background-color: #FFF;
+    padding: 30px;
+	-webkit-box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.55);
+	-moz-box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.55);
+	box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.55);
+}
+.hero-post-image {
+	box-shadow: -1px 0px 10px 2px rgb(255 255 255 / 55%);
+}
+.main-link-style {
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+    background-image: linear-gradient( to right, #2c38bf, #8627a3 50%, var(--font-color,#FFF) 50% );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+.main-link-style:hover{
+	background-position: 0;
+}
+.main-link-style:hover::before {
+	width: 100%;
+}
+.main-link-style:before {
+    content: '';
+    background-image: linear-gradient( to right, #2c38bf, #8627a3 );
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+/* RESPONSIVE */
+@media all and (min-width:992px) {
+	.dd-hero-article {
+		position: absolute;
+		width: 100%;
+		left: -70px;
+		margin-top: 120px;
+	}
+}

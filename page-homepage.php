@@ -38,16 +38,18 @@ get_header();
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                        <article class="dd-hero-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                             <div class="entry-header">
-                                <h1 class="entry-title"><?php the_title(); ?></h1>
+                                <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style" style="--font-color:#000;">
+                                    <h1 class="entry-title"><?php the_title(); ?></h1>
+                                </a>
                             </div>
                             <div class="entry-content">
                                 <?php the_content(); ?>
                             </div>
                             <div class="entry-footer">
-                                <span class="posted-on"><?php the_date(); ?></span>
-                                <span class="byline"><?php the_author(); ?></span>
+                                <!-- <span class="posted-on"><?php the_date(); ?></span> -->
+                                <span class="byline">by <?php the_author(); ?></span>
                             </div>
                         </article>
                     </div>

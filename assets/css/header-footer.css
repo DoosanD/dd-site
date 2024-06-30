@@ -30,6 +30,7 @@ nav#site-navigation {
      inset 0 5px 0 hsla(0,0%,100%,.4);
     margin-top: 20px;
     padding-top: 20px;
+    border-radius: 0;
 }
 .navbar-default {
     border-color: var(--secondary-color)!important;
