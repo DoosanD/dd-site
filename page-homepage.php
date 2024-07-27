@@ -14,6 +14,7 @@ get_header();
 <main id="primary" class="site-main">
 
     <!-- <h1><?= CFS()->get('hero_title'); ?></h1> -->
+    <!-- HERO SECTION -->
     <section class="home-section hero-section">
         <?php
         // Start the WordPress loop
@@ -50,6 +51,8 @@ get_header();
                             <div class="entry-footer">
                                 <!-- <span class="posted-on"><?php the_date(); ?></span> -->
                                 <span class="byline">by <?php the_author(); ?></span>
+                                <!-- can it be category only as p tag ?  -->
+                                <span class="hero-category"><?php the_category() ?></span>
                             </div>
                         </article>
                     </div>
@@ -65,7 +68,66 @@ get_header();
         ?>
 
     </section>
+    <!-- HERO SECTION END-->
 
+    <!-- BLOG SECTION -->
+    <section class="blog-section blog-home">
+        <div class="container">
+            <?php
+            // Start the WordPress loop
+            $args = array(
+                'posts_per_page' => 3, // Number of posts per page
+                'orderby'        => 'date', // Order by date (most recent first)
+                'order'          => 'DESC', // Order descending
+                'category_name'  => 'popular' // Replace 'your-category-slug' with the slug of your category
+            );
+
+            $query = new WP_Query($args);
+
+
+            $query = new WP_Query($args);
+
+            if ($query->have_posts()) {
+                while ($query->have_posts()) {
+                    $query->the_post(); ?>
+
+                    <div class="blog-container">
+                        <div class="col-md-4">
+                            <article class="dd-blog-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                                <div class="hero-image-holder">
+                                    <div class="">
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <?php the_post_thumbnail('full', array('class' => 'hero-post-image')); ?>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <div class="entry-header">
+                                    <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style" style="--font-color:#000;">
+                                        <h1 class="entry-title"><?php the_title(); ?></h1>
+                                    </a>
+                                </div>
+                                <div class="entry-content">
+                                    <?php the_content(); ?>
+                                </div>
+                                <div class="entry-footer">
+                                    <!-- <span class="posted-on"><?php the_date(); ?></span> -->
+                                    <span class="byline">by <?php the_author(); ?></span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+            <?php }
+            } else {
+                echo '<p class="no-post-p">No posts found.</p>';
+            }
+
+            // Restore original post data
+            wp_reset_postdata();
+            ?>
+        </div>
+    </section>
+    <!-- BLOG SECTION -->
 </main><!-- #main -->
 
 <?php
