@@ -51,7 +51,6 @@ get_header();
                             <div class="entry-footer">
                                 <!-- <span class="posted-on"><?php the_date(); ?></span> -->
                                 <span class="byline">by <?php the_author(); ?></span>
-                                <!-- can it be category only as p tag ?  -->
                                 <span class="hero-category"><?php the_category() ?></span>
                             </div>
                         </article>
@@ -89,32 +88,32 @@ get_header();
 
             if ($query->have_posts()) {
                 while ($query->have_posts()) {
-                    $query->the_post(); ?>
+                    $query->the_post();
+                    $i++;
+            ?>
 
-                    <div class="blog-container">
-                        <div class="col-md-4">
-                            <article class="dd-blog-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                                <div class="hero-image-holder">
-                                    <div class="">
-                                        <?php if (has_post_thumbnail()) : ?>
-                                            <?php the_post_thumbnail('full', array('class' => 'hero-post-image')); ?>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                                <div class="entry-header">
-                                    <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style" style="--font-color:#000;">
-                                        <h1 class="entry-title"><?php the_title(); ?></h1>
-                                    </a>
-                                </div>
-                                <div class="entry-content">
-                                    <?php the_content(); ?>
-                                </div>
-                                <div class="entry-footer">
-                                    <!-- <span class="posted-on"><?php the_date(); ?></span> -->
-                                    <span class="byline">by <?php the_author(); ?></span>
-                                </div>
-                            </article>
-                        </div>
+                    <div class="blog-container-<?= $i; ?>">
+
+                        <article class="dd-blog-article col-md-4" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                            <div class="blog-image-holder">
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <?php the_post_thumbnail('full', array('class' => 'blog-post-image')); ?>
+                                <?php endif; ?>
+                            </div>
+                            <div class="entry-header">
+                                <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style" style="--font-color:#000;">
+                                    <h1 class="entry-title"><?php the_title(); ?></h1>
+                                </a>
+                            </div>
+                            <div class="entry-content">
+                                <?php the_content(); ?>
+                            </div>
+                            <div class="entry-footer">
+                                <!-- <span class="posted-on"><?php the_date(); ?></span> -->
+                                <span class="byline">by <?php the_author(); ?></span>
+                            </div>
+                        </article>
+
                     </div>
 
             <?php }

@@ -48,7 +48,6 @@ body a {
 /* HERO SECTION */
 section.home-section.hero-section {
 	padding: 30px 0;
-    background: rgb(0,0,0);
     background: linear-gradient(180deg, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 50%);
 }
 .dd-hero-article {
@@ -92,6 +91,17 @@ section.home-section.hero-section {
     width: 0;
     height: 3px;
     transition: all 0.3s ease-in-out;
+}
+/* BLOG SECTION */
+.blog-post-image {
+    width: 360px;
+    height: 270px;
+    object-fit: cover;
+	filter: hue-rotate(22deg) brightness(90%);
+	transition: all .4s ease;
+}
+.blog-post-image:hover {
+	filter: hue-rotate(0deg) brightness(100%);
 }
 /* RESPONSIVE */
 @media all and (min-width:992px) {
