@@ -127,6 +127,11 @@ get_header();
         </div>
     </section>
     <!-- BLOG SECTION -->
+
+    <!-- BANNER SECTION -->
+    <section class="banner-section"></section>
+    <!-- BANNER SECTION -->
+
 </main><!-- #main -->
 
 <?php
