@@ -22,7 +22,7 @@ get_header();
         $args = array(
             'posts_per_page' => 1, // Only retrieve the latest post
             'orderby' => 'date',
-            'order' => 'DESC'
+            'order'   => 'DESC'
         );
 
         $query = new WP_Query($args);
@@ -34,7 +34,7 @@ get_header();
                 <div class="container">
                     <div class="col-md-6">
                         <div class="hero-image-holder">
-                            <?php if (has_post_thumbnail()): ?>
+                            <?php if (has_post_thumbnail()) : ?>
                                 <?php the_post_thumbnail('full', array('class' => 'hero-post-image')); ?>
                             <?php endif; ?>
                         </div>
@@ -42,8 +42,7 @@ get_header();
                     <div class="col-md-6">
                         <article class="dd-hero-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                             <div class="entry-header">
-                                <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style"
-                                    style="--font-color:#000;">
+                                <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style" style="--font-color:#000;">
                                     <h1 class="entry-title"><?php the_title(); ?></h1>
                                 </a>
                             </div>
@@ -59,7 +58,7 @@ get_header();
                     </div>
                 </div>
 
-            <?php }
+        <?php }
         } else {
             echo '<p class="no-post-p">No posts found.</p>';
         }
@@ -78,9 +77,9 @@ get_header();
             // Start the WordPress loop
             $args = array(
                 'posts_per_page' => 3, // Number of posts per page
-                'orderby' => 'date', // Order by date (most recent first)
-                'order' => 'DESC', // Order descending
-                'category_name' => 'popular' // Replace 'your-category-slug' with the slug of your category
+                'orderby'        => 'date', // Order by date (most recent first)
+                'order'          => 'DESC', // Order descending
+                'category_name'  => 'popular' // Replace 'your-category-slug' with the slug of your category
             );
 
             $query = new WP_Query($args);
@@ -92,19 +91,18 @@ get_header();
                 while ($query->have_posts()) {
                     $query->the_post();
                     $i++;
-                    ?>
+            ?>
 
                     <div class="blog-container-<?= $i; ?>">
 
                         <article class="dd-blog-article col-md-4" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                             <div class="blog-image-holder">
-                                <?php if (has_post_thumbnail()): ?>
+                                <?php if (has_post_thumbnail()) : ?>
                                     <?php the_post_thumbnail('full', array('class' => 'blog-post-image')); ?>
                                 <?php endif; ?>
                             </div>
                             <div class="entry-header">
-                                <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style"
-                                    style="--font-color:#000;">
+                                <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style" style="--font-color:#000;">
                                     <h1 class="entry-title"><?php the_title(); ?></h1>
                                 </a>
                             </div>
@@ -119,7 +117,7 @@ get_header();
 
                     </div>
 
-                <?php }
+            <?php }
             } else {
                 echo '<p class="no-post-p">No posts found.</p>';
             }
