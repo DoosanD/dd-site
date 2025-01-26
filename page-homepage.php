@@ -14,7 +14,7 @@ get_header();
 <main id="primary" class="site-main">
 
     <!-- <h1><?= CFS()->get('hero_title'); ?></h1> -->
-    <!-- Iddle timer 25.01.2025 073 -->
+    <!-- Iddle timer 26.01.2025 074 -->
     <!-- HERO SECTION -->
     <section class="home-section hero-section">
         <?php
