@@ -44,7 +44,7 @@ get_header();
                             <div class="entry-header">
                                 <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style"
                                     style="--font-color:#000;">
-                                    <h1 class="entry-title"><?php the_title(); ?></h1>
+                                    <h1 class="entry-title"><?php the_title(); ?>This title is hardoced</h1>
                                 </a>
                             </div>
                             <div class="entry-content">
