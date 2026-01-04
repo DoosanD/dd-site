@@ -16,7 +16,7 @@ get_header();
     <!-- <h1><?= CFS()->get('hero_title'); ?></h1> -->
     <!-- Iddle timer 10.02.2025 076 -->
     <!-- HERO SECTION -->
-    <section class="home-section hero-section">
+    <section class="home-section hero-section dd-section">
         <?php
         // Start the WordPress loop
         $args = array(
@@ -72,7 +72,7 @@ get_header();
     <!-- HERO SECTION END-->
 
     <!-- BLOG SECTION -->
-    <section class="blog-section blog-home">
+    <section class="blog-section blog-home dd-section">
         <div class="container">
             <?php
             // Start the WordPress loop
