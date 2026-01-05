@@ -7,13 +7,13 @@
  * 
  * @package D_Theme
  */
-
+$pods_home = function_exists('pods') ? pods('home') : null; // adjust pod slug if different
+// $hero_title = $pods_home ? $pods_home->display('hero_title') : '';
 get_header();
 ?>
 
 <main id="primary" class="site-main">
 
-    <!-- <h1><?= CFS()->get('hero_title'); ?></h1> -->
     <!-- Iddle timer 10.02.2025 076 -->
     <!-- HERO SECTION -->
     <section class="home-section hero-section dd-section">
@@ -44,7 +44,8 @@ get_header();
                             <div class="entry-header">
                                 <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style"
                                     style="--font-color:#000;">
-                                    <h1 class="entry-title"><?php the_title(); ?>This title is hardocedasd</h1>
+                                    <h1 class="entry-title"><?php the_title(); ?></h1>
+                                    <!-- <h1 class="entry-title"><?= $pods_home->display('hero_title') ?></h1> -->
                                 </a>
                             </div>
                             <div class="entry-content">
@@ -132,7 +133,9 @@ get_header();
     <!-- BLOG SECTION -->
 
     <!-- BANNER SECTION -->
-    <section class="banner-section"></section>
+    <section class="banner-section">
+        
+    </section>
     <!-- BANNER SECTION -->
 
 </main><!-- #main -->
