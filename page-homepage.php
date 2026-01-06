@@ -7,14 +7,12 @@
  * 
  * @package D_Theme
  */
-$pods_home = function_exists('pods') ? pods('home') : null; // adjust pod slug if different
-// $hero_title = $pods_home ? $pods_home->display('hero_title') : '';
+$pods_home = function_exists('pods') ? pods('home') : null;
 get_header();
 ?>
 
 <main id="primary" class="site-main">
 
-    <!-- Iddle timer 10.02.2025 076 -->
     <!-- HERO SECTION -->
     <section class="home-section hero-section dd-section">
         <?php
@@ -137,6 +135,46 @@ get_header();
         
     </section>
     <!-- BANNER SECTION -->
+
+    <!-- RSS BANNER (SHORT NEWS) SECTION -->
+    <section class="sbanner-section dd-section">
+        <div class="container">
+            <h2 class="sbanner-title h2-global">If the story doesn't make sense, follow the money.</h2>
+            <?php
+            // Use WordPress's built-in feed fetcher (SimplePie) - no API key required.
+            if ( ! function_exists( 'fetch_feed' ) ) {
+                include_once ABSPATH . WPINC . '/feed.php';
+            }
+
+            $feed_url = 'https://news.google.com/rss/search?q=when:24h+allinurl:bloomberg.com&hl=en-US&gl=US&ceid=US:en'; // BBC News RSS (no API key)
+            $max_items = 8;
+
+            $rss = fetch_feed( $feed_url );
+
+            if ( ! is_wp_error( $rss ) ) {
+                $max_items = $rss->get_item_quantity( $max_items );
+                $rss_items = $rss->get_items( 0, $max_items );
+            }
+
+            if ( empty( $rss_items ) ) : ?>
+                <p class="no-news">No news available right now.</p>
+            <?php else : ?>
+                <div class="sbanner-grid">
+                    <?php foreach ( $rss_items as $item ) : ?>
+                        <article class="sbanner-item">
+                            <a href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">
+                                <?php echo esc_html( $item->get_title() ); ?>
+                            </a>
+                            <time class="sbanner-time" datetime="<?php echo esc_attr( $item->get_date( 'c' ) ); ?>">
+                                <?php echo esc_html( $item->get_date( 'M j, Y' ) ); ?>
+                            </time>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </section>
+    <!-- RSS BANNER (SHORT NEWS) SECTION -->
 
 </main><!-- #main -->
 
