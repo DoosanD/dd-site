@@ -162,7 +162,7 @@ get_header();
                 <div class="sbanner-grid">
                     <?php foreach ( $rss_items as $item ) : ?>
                         <article class="sbanner-item">
-                            <a href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">
+                            <a class="sbanner-a" href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">
                                 <?php echo esc_html( $item->get_title() ); ?>
                             </a>
                             <time class="sbanner-time" datetime="<?php echo esc_attr( $item->get_date( 'c' ) ); ?>">

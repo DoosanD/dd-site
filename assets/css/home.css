@@ -96,6 +96,19 @@ section.home-section.hero-section {
     transition: all 0.3s ease-in-out;
 }
 /* BLOG SECTION */
+.blog-section.blog-home {
+	background: #f2f2f2;
+}
+.blog-container-2 article {
+	border: 1px solid #000;
+	padding: 10px;
+	box-shadow: 3px 3px #000;
+	transition: all .3s ease;
+}
+.blog-container-2:hover article {
+	box-shadow: 6px 6px #000;
+	translate: -2px -2px;
+}
 .blog-post-image {
     width: 360px;
     height: 270px;
