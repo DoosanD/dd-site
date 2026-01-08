@@ -131,9 +131,7 @@ get_header();
     <!-- BLOG SECTION -->
 
     <!-- BANNER SECTION -->
-    <section class="banner-section">
-        
-    </section>
+    <section class="banner-section"></section>
     <!-- BANNER SECTION -->
 
     <!-- RSS BANNER (SHORT NEWS) SECTION -->
