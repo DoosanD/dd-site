@@ -73,6 +73,7 @@ get_header();
     <!-- BLOG SECTION -->
     <section class="blog-section blog-home dd-section">
         <div class="container">
+            <h2 class="h2-global">Popular Posts</h2>
             <?php
             // Start the WordPress loop
             $args = array(
@@ -93,7 +94,7 @@ get_header();
                     $i++;
                     ?>
 
-                    <div class="blog-container-<?= $i; ?>">
+                    <div class="blog-container-<?= $i; ?> dd-blog-container">
 
                         <article class="dd-blog-article col-md-4" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                             <div class="blog-image-holder">
@@ -130,10 +131,6 @@ get_header();
     </section>
     <!-- BLOG SECTION -->
 
-    <!-- BANNER SECTION -->
-    <section class="banner-section"></section>
-    <!-- BANNER SECTION -->
-
     <!-- RSS BANNER (SHORT NEWS) SECTION -->
     <section class="sbanner-section dd-section">
         <div class="container">
@@ -143,38 +140,42 @@ get_header();
             if ( ! function_exists( 'fetch_feed' ) ) {
                 include_once ABSPATH . WPINC . '/feed.php';
             }
-
+            
             $feed_url = 'https://news.google.com/rss/search?q=when:24h+allinurl:bloomberg.com&hl=en-US&gl=US&ceid=US:en'; // BBC News RSS (no API key)
             $max_items = 8;
-
+            
             $rss = fetch_feed( $feed_url );
-
+            
             if ( ! is_wp_error( $rss ) ) {
                 $max_items = $rss->get_item_quantity( $max_items );
                 $rss_items = $rss->get_items( 0, $max_items );
             }
-
+            
             if ( empty( $rss_items ) ) : ?>
                 <p class="no-news">No news available right now.</p>
-            <?php else : ?>
-                <div class="sbanner-grid">
-                    <?php foreach ( $rss_items as $item ) : ?>
-                        <article class="sbanner-item">
-                            <a class="sbanner-a" href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">
-                                <?php echo esc_html( $item->get_title() ); ?>
-                            </a>
-                            <time class="sbanner-time" datetime="<?php echo esc_attr( $item->get_date( 'c' ) ); ?>">
-                                <?php echo esc_html( $item->get_date( 'M j, Y' ) ); ?>
-                            </time>
-                        </article>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-        </div>
-    </section>
-    <!-- RSS BANNER (SHORT NEWS) SECTION -->
+                <?php else : ?>
+                    <div class="sbanner-grid">
+                        <?php foreach ( $rss_items as $item ) : ?>
+                            <article class="sbanner-item">
+                                <a class="sbanner-a" href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">
+                                    <?php echo esc_html( $item->get_title() ); ?>
+                                </a>
+                                <time class="sbanner-time" datetime="<?php echo esc_attr( $item->get_date( 'c' ) ); ?>">
+                                    <?php echo esc_html( $item->get_date( 'M j, Y' ) ); ?>
+                                </time>
+                            </article>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </section>
+                <!-- RSS BANNER (SHORT NEWS) SECTION -->
 
-</main><!-- #main -->
-
-<?php
+                <!-- BANNER SECTION -->
+                <section class="banner-section dd-section"></section>
+                <!-- BANNER SECTION -->
+                
+            </main><!-- #main -->
+            
+            <?php
 get_footer();

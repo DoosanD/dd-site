@@ -49,6 +49,14 @@ body a {
 .dd-section {
 	padding-block: 60px;
 }
+.h2-global {
+	color: #000;
+	font-size: 2.5rem;
+	text-align: center;
+	margin-bottom: 40px;
+	position: relative;
+	text-transform: capitalize;
+}
 /* HERO SECTION */
 section.home-section.hero-section {
     background: linear-gradient(180deg, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 50%);
@@ -99,16 +107,6 @@ section.home-section.hero-section {
 .blog-section.blog-home {
 	background: #f2f2f2;
 }
-.blog-container-2 article {
-	border: 1px solid #000;
-	padding: 10px;
-	box-shadow: 3px 3px #000;
-	transition: all .3s ease;
-}
-.blog-container-2:hover article {
-	box-shadow: 6px 6px #000;
-	translate: -2px -2px;
-}
 .blog-post-image {
     width: 360px;
     height: 270px;
@@ -118,6 +116,9 @@ section.home-section.hero-section {
 }
 .blog-post-image:hover {
 	filter: hue-rotate(0deg) brightness(100%);
+}
+.dd-blog-container {
+	margin: 15px 0;
 }
 /* RSS BANNER SECTION */
 .sbanner-grid {
@@ -135,6 +136,16 @@ section.home-section.hero-section {
   padding: 10px;
   border-radius: 15px;
 }
+a.sbanner-a {
+  color: #000;
+  font-size: 1.5rem;
+  /* text-decoration: none; */
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+a.sbanner-a:hover {
+  color: #8627a3;
+}
 /* RESPONSIVE */
 @media all and (min-width:992px) {
 	.dd-hero-article {
@@ -142,5 +153,15 @@ section.home-section.hero-section {
 		width: 100%;
 		left: -70px;
 		margin-top: 120px;
+	}
+	.blog-container-2 article {
+		border: 1px solid #000;
+		padding: 10px;
+		box-shadow: 3px 3px #000;
+		transition: all .3s ease;
+	}
+	.blog-container-2:hover article {
+		box-shadow: 6px 6px #000;
+		translate: -2px -2px;
 	}
 }
