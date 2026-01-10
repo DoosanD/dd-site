@@ -47,12 +47,12 @@ get_header();
                                 </a>
                             </div>
                             <div class="entry-content">
-                                <?php the_content(); ?>
+                                <?php echo wp_trim_words( get_the_excerpt(), 29, '...' ); ?>
                             </div>
                             <div class="entry-footer">
-                                <!-- <span class="posted-on"><?php the_date(); ?></span> -->
+                                <span class="posted-on"><?php the_date( 'j M, Y' ); ?></span>
                                 <span class="byline">by <?php the_author(); ?></span>
-                                <span class="hero-category"><?php the_category() ?></span>
+                                <!-- <span class="hero-category"><?php the_category() ?></span> -->
                             </div>
                         </article>
                     </div>
@@ -92,6 +92,7 @@ get_header();
                 while ($query->have_posts()) {
                     $query->the_post();
                     $i++;
+                    $date = get_the_date( 'j M, Y' );
                     ?>
 
                     <div class="blog-container-<?= $i; ?> dd-blog-container">
@@ -109,10 +110,10 @@ get_header();
                                 </a>
                             </div>
                             <div class="entry-content">
-                                <?php the_content(); ?>
+                                <?php echo wp_trim_words( get_the_excerpt(), 29, '...' ); ?>
                             </div>
                             <div class="entry-footer">
-                                <!-- <span class="posted-on"><?php the_date(); ?></span> -->
+                                <span class="posted-on"><?php echo esc_html( $date ); ?></span>
                                 <span class="byline">by <?php the_author(); ?></span>
                             </div>
                         </article>
@@ -161,7 +162,7 @@ get_header();
                                     <?php echo esc_html( $item->get_title() ); ?>
                                 </a>
                                 <time class="sbanner-time" datetime="<?php echo esc_attr( $item->get_date( 'c' ) ); ?>">
-                                    <?php echo esc_html( $item->get_date( 'M j, Y' ) ); ?>
+                                    <?php echo esc_html( $item->get_date( 'j M, Y' ) ); ?>
                                 </time>
                             </article>
                             <?php endforeach; ?>
@@ -174,6 +175,19 @@ get_header();
                 <!-- BANNER SECTION -->
                 <section class="banner-section dd-section"></section>
                 <!-- BANNER SECTION -->
+
+                <!-- NEWSLETTER SECTION -->
+                <section class="newsletter-section dd-section">
+                    <div class="container">
+                        <h2 class="h2-global">Subscribe to our Newsletter</h2>
+                        <p class="newsletter-text">Stay updated with the latest articles and insights from Diverse Dialogues. Subscribe to our newsletter and never miss an update!</p>
+                        <form class="newsletter-form" action="#" method="post">
+                            <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address" required>
+                            <button type="submit" class="newsletter-button">Subscribe</button>
+                        </form>
+                    </div>
+                </section>
+                <!-- NEWSLETTER SECTION -->
                 
             </main><!-- #main -->
             
