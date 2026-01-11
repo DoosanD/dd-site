@@ -145,6 +145,10 @@ a.sbanner-a {
 a.sbanner-a:hover {
   color: #8627a3;
 }
+/* NEWSLETTER SECTION  */
+.newsletter-section {
+  background: #f2f2f2f2;
+}
 /* RESPONSIVE */
 @media all and (min-width:992px) {
 	.dd-hero-article {

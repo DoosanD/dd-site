@@ -141,46 +141,86 @@ get_header();
             if ( ! function_exists( 'fetch_feed' ) ) {
                 include_once ABSPATH . WPINC . '/feed.php';
             }
-            
-            $feed_url = 'https://news.google.com/rss/search?q=when:24h+allinurl:bloomberg.com&hl=en-US&gl=US&ceid=US:en'; // BBC News RSS (no API key)
+
+            $feed_url = 'https://rss.app/feeds/PoicYKsSw2vhO1UJ.xml';
             $max_items = 8;
-            
+            $rss_items = [];
+
             $rss = fetch_feed( $feed_url );
-            
+
+            $feed_image = '';
             if ( ! is_wp_error( $rss ) ) {
                 $max_items = $rss->get_item_quantity( $max_items );
                 $rss_items = $rss->get_items( 0, $max_items );
+                if ( method_exists( $rss, 'get_image_url' ) ) {
+                    $feed_image = $rss->get_image_url();
+                }
             }
-            
+
             if ( empty( $rss_items ) ) : ?>
                 <p class="no-news">No news available right now.</p>
-                <?php else : ?>
-                    <div class="sbanner-grid">
-                        <?php foreach ( $rss_items as $item ) : ?>
-                            <article class="sbanner-item">
-                                <a class="sbanner-a" href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">
-                                    <?php echo esc_html( $item->get_title() ); ?>
-                                </a>
-                                <time class="sbanner-time" datetime="<?php echo esc_attr( $item->get_date( 'c' ) ); ?>">
-                                    <?php echo esc_html( $item->get_date( 'j M, Y' ) ); ?>
-                                </time>
-                            </article>
-                            <?php endforeach; ?>
-                        </div>
-                        <?php endif; ?>
+            <?php else : ?>
+                
+
+                <div class="sbanner-grid">
+                    <?php foreach ( $rss_items as $item ) : ?>
+                        <?php
+                        $image_url = '';
+
+                        // 1) Try enclosure (common for podcasts/images)
+                        $enclosure = $item->get_enclosure();
+                        if ( $enclosure ) {
+                            $image_url = $enclosure->get_link();
+                        }
+
+                        // 2) Try media:thumbnail (media RSS)
+                        if ( empty( $image_url ) ) {
+                            $media = $item->get_item_tags( 'http://search.yahoo.com/mrss/', 'thumbnail' );
+                            if ( $media && isset( $media[0]['attribs'] ) ) {
+                                // look for url attribute in attribs
+                                foreach ( $media[0]['attribs'] as $attr_group ) {
+                                    if ( isset( $attr_group['url'] ) ) {
+                                        $image_url = $attr_group['url'];
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        // 3) Fallback: extract first <img> from description/content
+                        if ( empty( $image_url ) ) {
+                            $desc = $item->get_description();
+                            if ( preg_match( '/<img[^>]+src=["\']([^"\']+)["\']/i', $desc, $matches ) ) {
+                                $image_url = $matches[1];
+                            }
+                        }
+                        ?>
+
+                        <article class="sbanner-item">
+                            <?php if ( ! empty( $image_url ) ) : ?>
+                                <div class="sbanner-item-image">
+                                    <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $item->get_title() ); ?>">
+                                </div>
+                            <?php endif; ?>
+
+                            <a class="sbanner-a" href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">
+                                <?php echo esc_html( $item->get_title() ); ?>
+                            </a>
+                            <time class="sbanner-time" datetime="<?php echo esc_attr( $item->get_date( 'c' ) ); ?>">
+                                <?php echo esc_html( $item->get_date( 'j M, Y' ) ); ?>
+                            </time>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
                     </div>
                 </section>
                 <!-- RSS BANNER (SHORT NEWS) SECTION -->
-
-                <!-- BANNER SECTION -->
-                <section class="banner-section dd-section"></section>
-                <!-- BANNER SECTION -->
 
                 <!-- NEWSLETTER SECTION -->
                 <section class="newsletter-section dd-section">
                     <div class="container">
                         <h2 class="h2-global">Subscribe to our Newsletter</h2>
-                        <p class="newsletter-text">Stay updated with the latest articles and insights from Diverse Dialogues. Subscribe to our newsletter and never miss an update!</p>
                         <form class="newsletter-form" action="#" method="post">
                             <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address" required>
                             <button type="submit" class="newsletter-button">Subscribe</button>
