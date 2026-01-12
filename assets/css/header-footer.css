@@ -60,7 +60,6 @@ nav#site-navigation {
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
 }
-
 #primary-menu li a:before {
   content: '';
   background-image: linear-gradient(
@@ -76,11 +75,21 @@ nav#site-navigation {
   height: 3px;
   transition: all 0.3s ease-in-out;
 }
-
 #primary-menu li a:hover {
  background-position: 0;
 }
-
 #primary-menu li a:hover::before {
   width:100%;
+}
+/* FOOTER STYLES */
+#colophon {
+    padding: 40px 0;
+    background-color: var(--secondary-color);
+    color: #FFF;
+}
+/* RESPONSIVE */
+@media all and (min-width:768px) {
+    #colophon {
+        padding: 60px 0;
+    }
 }

@@ -220,11 +220,13 @@ get_header();
                 <!-- NEWSLETTER SECTION -->
                 <section class="newsletter-section dd-section">
                     <div class="container">
-                        <h2 class="h2-global">Subscribe to our Newsletter</h2>
-                        <form class="newsletter-form" action="#" method="post">
-                            <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address" required>
-                            <button type="submit" class="newsletter-button">Subscribe</button>
-                        </form>
+                        <div class="newsletter-container">
+                            <h2 class="h2-global">Subscribe to our Newsletter</h2>
+                            <form class="newsletter-form" action="#" method="post">
+                                <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address" required>
+                                <button type="submit" class="newsletter-button">Subscribe</button>
+                            </form>
+                        </div>
                     </div>
                 </section>
                 <!-- NEWSLETTER SECTION -->

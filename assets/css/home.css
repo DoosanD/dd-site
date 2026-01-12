@@ -47,7 +47,7 @@ body a {
 }
 /* GLOBAL CSS CLASS STYLES */
 .dd-section {
-	padding-block: 60px;
+	padding-block: 40px;
 }
 .h2-global {
 	color: #000;
@@ -149,6 +149,9 @@ a.sbanner-a:hover {
 .newsletter-section {
   background: #f2f2f2f2;
 }
+.newsletter-container {
+	padding: 0 15px;
+}
 /* RESPONSIVE */
 @media all and (min-width:992px) {
 	.dd-hero-article {
@@ -166,5 +169,15 @@ a.sbanner-a:hover {
 	.blog-container-2:hover article {
 		box-shadow: 6px 6px #000;
 		translate: -2px -2px;
+	}
+}
+@media all and (min-width: 768px) {
+	.dd-section {
+		padding-block: 60px;
+	}
+	.newsletter-form {
+		display:grid;
+		grid-template-columns: 1fr 300px;
+		gap: 10px;
 	}
 }
