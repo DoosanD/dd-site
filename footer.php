@@ -14,9 +14,18 @@
 
 <footer id="colophon" class="site-footer">
 	<div class="site-info">
+		<div class="footer-logo"><?php the_custom_logo(); ?></div>
 		<div class="container">
-			<div class="footer-left col-md-6">Footer CP</div>
-			<div class="footer-right col-md-6">Footer CP</div>
+			<div class="footer-inner-holder">
+				<ul class="footer-content-list">
+					<li class="footer-content-year">©<?php echo date("Y"); ?></li>
+					<li><a class="footer-content-link">About</a></li>
+					<li><a class="footer-content-link">Privacy Policy</a></li>
+					<li><a class="footer-content-link">Contact</a></li>
+					<li><a class="footer-content-link">LinkedIn</a></li>
+					<li><a class="footer-content-link">Twitter</a></li>
+				</ul>
+			</div>
 		</div>
 	</div><!-- .site-info -->
 </footer><!-- #colophon -->
