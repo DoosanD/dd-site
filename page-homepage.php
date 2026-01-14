@@ -224,7 +224,9 @@ get_header();
                             <h2 class="h2-global">Subscribe to our Newsletter</h2>
                             <form class="newsletter-form" action="#" method="post">
                                 <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address" required>
-                                <button type="submit" class="newsletter-button">Subscribe</button>
+                                <div class="newsletter-btn-holder">
+                                    <button type="submit" class="newsletter-btn"><span>Subscribe</span></button>
+                                </div>
                             </form>
                         </div>
                     </div>

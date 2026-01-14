@@ -152,6 +152,97 @@ a.sbanner-a:hover {
 .newsletter-container {
 	padding: 0 15px;
 }
+.newsletter-btn-holder {
+	position:relative;
+	display: flex;
+}
+.newsletter-btn {
+  background: linear-gradient(
+    to bottom right,
+    rgba(44, 56, 191, 1) 0%,
+    rgba(134, 39, 163, 1) 100%
+  );
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  padding: 0;
+  border: none;
+  border-radius: 0px;
+}
+.newsletter-btn span {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+  transition: 0.4s all;
+}
+.newsletter-btn:before,
+.newsletter-btn:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  background: rgba(44, 56, 191, 1);
+  transition: all 0.3s ease;
+}
+.newsletter-btn:before {
+  height: 0%;
+  width: 2px;
+}
+.newsletter-btn:after {
+  width: 0%;
+  height: 2px;
+}
+.newsletter-btn:hover {
+  background: transparent;
+  box-shadow: none;
+}
+.newsletter-btn:hover:before {
+  height: 100%;
+}
+.newsletter-btn:hover:after {
+  width: 100%;
+}
+.newsletter-btn span:hover {
+  color: rgba(44, 56, 191, 1);
+}
+.newsletter-btn span:before,
+.newsletter-btn span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  background: rgba(44, 56, 191, 1);
+  transition: all 0.3s ease;
+}
+.newsletter-btn span:before {
+  width: 2px;
+  height: 0%;
+}
+.newsletter-btn span:after {
+  width: 0%;
+  height: 2px;
+}
+.newsletter-btn span:hover:before {
+  height: 100%;
+}
+.newsletter-btn span:hover:after {
+  width: 100%;
+}
+input.newsletter-input {
+  border: 2px solid rgb(134,39,163);
+  padding: 0 20px;
+  font-size: 18px;
+  color: #000;
+  text-transform: capitalize;
+  height: 60px;
+}
 /* RESPONSIVE */
 @media all and (min-width:992px) {
 	.dd-hero-article {

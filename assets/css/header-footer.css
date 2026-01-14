@@ -2,6 +2,9 @@
     --primary-color: #FFF;
     --secondary-color: #000;
 }
+.custom-logo {
+  max-width: 120px;
+}
 .--d-flex-center {
     display: flex;
     align-items: center;

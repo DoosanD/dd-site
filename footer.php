@@ -19,11 +19,11 @@
 			<div class="footer-inner-holder">
 				<ul class="footer-content-list">
 					<li class="footer-content-year">©<?php echo date("Y"); ?></li>
-					<li><a class="footer-content-link">About</a></li>
-					<li><a class="footer-content-link">Privacy Policy</a></li>
-					<li><a class="footer-content-link">Contact</a></li>
-					<li><a class="footer-content-link">LinkedIn</a></li>
-					<li><a class="footer-content-link">Twitter</a></li>
+					<li><a href="" class="footer-content-link">About</a></li>
+					<li><a href="" target="_blank" rel="noopener noreferrer" class="footer-content-link">Privacy Policy</a></li>
+					<li><a href="" target="_blank" rel="noopener noreferrer" class="footer-content-link">Contact</a></li>
+					<li><a href="" target="_blank" rel="noopener noreferrer" class="footer-content-link">LinkedIn</a></li>
+					<li><a href="" target="_blank" rel="noopener noreferrer" class="footer-content-link">Twitter</a></li>
 				</ul>
 			</div>
 		</div>
