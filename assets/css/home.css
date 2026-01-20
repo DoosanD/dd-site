@@ -49,6 +49,12 @@ body a {
 .dd-section {
 	padding-block: 40px;
 }
+.typewriter {
+  display:flex;
+  justify-content: center;
+  width: fit-content;
+  margin-inline: auto;
+}
 .h2-global {
 	color: #000;
 	font-size: 2.5rem;
@@ -56,6 +62,20 @@ body a {
 	margin-bottom: 40px;
 	position: relative;
 	text-transform: capitalize;
+
+  overflow:hidden;
+  margin-inline: auto;
+  white-space:nowrap;
+  border-right:1px solid #000;
+  animation:typing 3s steps(22) forwards, blink .75s step-end infinite;
+  animation-timeline: view();
+}
+@keyframes typing {
+  from { width:0; }
+  to { width:100%; }
+}
+@keyframes blink {
+  50% { border-color:transparent; }
 }
 /* HERO SECTION */
 section.home-section.hero-section {

@@ -47,10 +47,10 @@ get_header();
                                 </a>
                             </div>
                             <div class="entry-content">
-                                <?php echo wp_trim_words( get_the_excerpt(), 29, '...' ); ?>
+                                <?php echo wp_trim_words(get_the_excerpt(), 29, '...'); ?>
                             </div>
                             <div class="entry-footer">
-                                <span class="posted-on"><?php the_date( 'j M, Y' ); ?></span>
+                                <span class="posted-on"><?php the_date('j M, Y'); ?></span>
                                 <span class="byline">by <?php the_author(); ?></span>
                                 <!-- <span class="hero-category"><?php the_category() ?></span> -->
                             </div>
@@ -73,7 +73,9 @@ get_header();
     <!-- BLOG SECTION -->
     <section class="blog-section blog-home dd-section">
         <div class="container">
-            <h2 class="h2-global">Popular Posts</h2>
+            <div class="typewriter">
+                <h2 class="h2-global">Popular Posts</h2>
+            </div>
             <?php
             // Start the WordPress loop
             $args = array(
@@ -92,7 +94,7 @@ get_header();
                 while ($query->have_posts()) {
                     $query->the_post();
                     $i++;
-                    $date = get_the_date( 'j M, Y' );
+                    $date = get_the_date('j M, Y');
                     ?>
 
                     <div class="blog-container-<?= $i; ?> dd-blog-container">
@@ -110,10 +112,10 @@ get_header();
                                 </a>
                             </div>
                             <div class="entry-content">
-                                <?php echo wp_trim_words( get_the_excerpt(), 29, '...' ); ?>
+                                <?php echo wp_trim_words(get_the_excerpt(), 29, '...'); ?>
                             </div>
                             <div class="entry-footer">
-                                <span class="posted-on"><?php echo esc_html( $date ); ?></span>
+                                <span class="posted-on"><?php echo esc_html($date); ?></span>
                                 <span class="byline">by <?php the_author(); ?></span>
                             </div>
                         </article>
@@ -135,51 +137,53 @@ get_header();
     <!-- RSS BANNER (SHORT NEWS) SECTION -->
     <section class="sbanner-section dd-section">
         <div class="container">
-            <h2 class="sbanner-title h2-global">If the story doesn't make sense, follow the money.</h2>
+            <div class="typewriter">
+                <h2 class="sbanner-title h2-global">If the story doesn't make sense, follow the money.</h2>
+            </div>
             <?php
             // Use WordPress's built-in feed fetcher (SimplePie) - no API key required.
-            if ( ! function_exists( 'fetch_feed' ) ) {
+            if (!function_exists('fetch_feed')) {
                 include_once ABSPATH . WPINC . '/feed.php';
             }
 
-            $feed_url = 'https://rss.app/feeds/PoicYKsSw2vhO1UJ.xml';
+            $feed_url = 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml';
             $max_items = 8;
             $rss_items = [];
 
-            $rss = fetch_feed( $feed_url );
+            $rss = fetch_feed($feed_url);
 
             $feed_image = '';
-            if ( ! is_wp_error( $rss ) ) {
-                $max_items = $rss->get_item_quantity( $max_items );
-                $rss_items = $rss->get_items( 0, $max_items );
-                if ( method_exists( $rss, 'get_image_url' ) ) {
+            if (!is_wp_error($rss)) {
+                $max_items = $rss->get_item_quantity($max_items);
+                $rss_items = $rss->get_items(0, $max_items);
+                if (method_exists($rss, 'get_image_url')) {
                     $feed_image = $rss->get_image_url();
                 }
             }
 
-            if ( empty( $rss_items ) ) : ?>
+            if (empty($rss_items)): ?>
                 <p class="no-news">No news available right now.</p>
-            <?php else : ?>
-                
+            <?php else: ?>
+
 
                 <div class="sbanner-grid">
-                    <?php foreach ( $rss_items as $item ) : ?>
+                    <?php foreach ($rss_items as $item): ?>
                         <?php
                         $image_url = '';
 
                         // 1) Try enclosure (common for podcasts/images)
                         $enclosure = $item->get_enclosure();
-                        if ( $enclosure ) {
+                        if ($enclosure) {
                             $image_url = $enclosure->get_link();
                         }
 
                         // 2) Try media:thumbnail (media RSS)
-                        if ( empty( $image_url ) ) {
-                            $media = $item->get_item_tags( 'http://search.yahoo.com/mrss/', 'thumbnail' );
-                            if ( $media && isset( $media[0]['attribs'] ) ) {
+                        if (empty($image_url)) {
+                            $media = $item->get_item_tags('http://search.yahoo.com/mrss/', 'thumbnail');
+                            if ($media && isset($media[0]['attribs'])) {
                                 // look for url attribute in attribs
-                                foreach ( $media[0]['attribs'] as $attr_group ) {
-                                    if ( isset( $attr_group['url'] ) ) {
+                                foreach ($media[0]['attribs'] as $attr_group) {
+                                    if (isset($attr_group['url'])) {
                                         $image_url = $attr_group['url'];
                                         break;
                                     }
@@ -188,52 +192,56 @@ get_header();
                         }
 
                         // 3) Fallback: extract first <img> from description/content
-                        if ( empty( $image_url ) ) {
+                        if (empty($image_url)) {
                             $desc = $item->get_description();
-                            if ( preg_match( '/<img[^>]+src=["\']([^"\']+)["\']/i', $desc, $matches ) ) {
+                            if (preg_match('/<img[^>]+src=["\']([^"\']+)["\']/i', $desc, $matches)) {
                                 $image_url = $matches[1];
                             }
                         }
                         ?>
 
                         <article class="sbanner-item">
-                            <?php if ( ! empty( $image_url ) ) : ?>
+                            <?php if (!empty($image_url)): ?>
                                 <div class="sbanner-item-image">
-                                    <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $item->get_title() ); ?>">
+                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($item->get_title()); ?>">
                                 </div>
                             <?php endif; ?>
 
-                            <a class="sbanner-a" href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">
-                                <?php echo esc_html( $item->get_title() ); ?>
+                            <a class="sbanner-a" href="<?php echo esc_url($item->get_permalink()); ?>" target="_blank"
+                                rel="noopener noreferrer">
+                                <?php echo esc_html($item->get_title()); ?>
                             </a>
-                            <time class="sbanner-time" datetime="<?php echo esc_attr( $item->get_date( 'c' ) ); ?>">
-                                <?php echo esc_html( $item->get_date( 'j M, Y' ) ); ?>
+                            <time class="sbanner-time" datetime="<?php echo esc_attr($item->get_date('c')); ?>">
+                                <?php echo esc_html($item->get_date('j M, Y')); ?>
                             </time>
                         </article>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
-                    </div>
-                </section>
-                <!-- RSS BANNER (SHORT NEWS) SECTION -->
+        </div>
+    </section>
+    <!-- RSS BANNER (SHORT NEWS) SECTION -->
 
-                <!-- NEWSLETTER SECTION -->
-                <section class="newsletter-section dd-section">
-                    <div class="container">
-                        <div class="newsletter-container">
-                            <h2 class="h2-global">Subscribe to our Newsletter</h2>
-                            <form class="newsletter-form" action="#" method="post">
-                                <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address" required>
-                                <div class="newsletter-btn-holder">
-                                    <button type="submit" class="newsletter-btn"><span>Subscribe</span></button>
-                                </div>
-                            </form>
-                        </div>
+    <!-- NEWSLETTER SECTION -->
+    <section class="newsletter-section dd-section">
+        <div class="container">
+            <div class="newsletter-container">
+                <div class="typewriter">
+                    <h2 class="h2-global">Subscribe to our Newsletter</h2>
+                </div>
+                <form class="newsletter-form" action="#" method="post">
+                    <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address"
+                        required>
+                    <div class="newsletter-btn-holder">
+                        <button type="submit" class="newsletter-btn"><span>Subscribe</span></button>
                     </div>
-                </section>
-                <!-- NEWSLETTER SECTION -->
-                
-            </main><!-- #main -->
-            
-            <?php
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- NEWSLETTER SECTION -->
+
+</main><!-- #main -->
+
+<?php
 get_footer();
