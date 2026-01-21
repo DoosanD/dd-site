@@ -58,6 +58,7 @@ body a {
 .h2-global {
 	color: #000;
 	font-size: 2.5rem;
+  line-height: 1.1;
 	text-align: center;
 	margin-bottom: 40px;
 	position: relative;
@@ -122,6 +123,25 @@ section.home-section.hero-section {
     width: 0;
     height: 3px;
     transition: all 0.3s ease-in-out;
+}
+.entry-content-main-p {
+  margin: 15px 0 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.entry-footer-main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 20px;
+}
+.posted-on {
+  font-weight: 600;
+  font-size: 16px;
+}
+.byline {
+  font-style: italic;
+  font-size: 16px;
 }
 /* BLOG SECTION */
 .blog-section.blog-home {
@@ -269,7 +289,7 @@ input.newsletter-input {
 		position: absolute;
 		width: 100%;
 		left: -70px;
-		margin-top: 120px;
+		margin-top: 90px;
 	}
 	.blog-container-2 article {
 		border: 1px solid #000;
