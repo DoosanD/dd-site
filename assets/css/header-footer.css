@@ -151,6 +151,10 @@ nav#site-navigation {
     align-items: center;
     justify-content: center;
 }
+.footer-inner-holder {
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
+}
 /* RESPONSIVE */
 @media all and (min-width:768px) {
     #colophon {

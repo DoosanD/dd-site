@@ -161,6 +161,11 @@ section.home-section.hero-section {
 	margin: 15px 0;
 }
 /* RSS BANNER SECTION */
+.rss-img {
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
 .sbanner-grid {
 	padding: 0 15px;
 	display: grid;
@@ -212,7 +217,7 @@ a.sbanner-a:hover {
 .newsletter-btn span {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 60px;
   color: #FFF;
   display: flex;
   justify-content: center;
@@ -282,6 +287,11 @@ input.newsletter-input {
   color: #000;
   text-transform: capitalize;
   height: 60px;
+}
+.newsletter-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap:15px;
 }
 /* RESPONSIVE */
 @media all and (min-width:992px) {

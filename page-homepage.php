@@ -76,7 +76,7 @@ get_header();
     <section class="blog-section blog-home dd-section">
         <div class="container">
             <div class="typewriter">
-                <h2 class="h2-global">Popular Posts</h2>
+                <h2 class="h2-global"><?= $pods_home->display(name: 'blog_title') ?></h2>
             </div>
             <?php
             // Start the WordPress loop
@@ -100,28 +100,27 @@ get_header();
                     ?>
 
                     <div class="blog-container-<?= $i; ?> dd-blog-container">
-
-                        <article class="dd-blog-article col-md-4" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                            <div class="blog-image-holder">
-                                <?php if (has_post_thumbnail()): ?>
-                                    <?php the_post_thumbnail('full', array('class' => 'blog-post-image')); ?>
-                                <?php endif; ?>
-                            </div>
-                            <div class="entry-header">
-                                <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style"
-                                    style="--font-color:#000;">
-                                    <h3 class="entry-title"><?php the_title(); ?></h3>
-                                </a>
-                            </div>
-                            <div class="entry-content">
-                                <?php echo wp_trim_words(get_the_excerpt(), 29, '...'); ?>
-                            </div>
-                            <div class="entry-footer">
-                                <span class="posted-on"><?php echo esc_html($date); ?></span>
-                                <span class="byline">by <?php the_author(); ?></span>
-                            </div>
-                        </article>
-
+                        <a class="blog-card-link" href="<?php the_permalink(); ?>">
+                            <article class="dd-blog-article col-md-4" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                                <div class="blog-image-holder">
+                                    <?php if (has_post_thumbnail()): ?>
+                                        <?php the_post_thumbnail('full', array('class' => 'blog-post-image')); ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="entry-header">
+                                    <h3 class="entry-title main-link-style" style="--font-color:#000;">
+                                        <?php the_title(); ?>
+                                    </h3>
+                                </div>
+                                <div class="entry-content">
+                                    <?php echo wp_trim_words(get_the_excerpt(), 29, '...'); ?>
+                                </div>
+                                <div class="entry-footer">
+                                    <span class="posted-on"><?php echo esc_html($date); ?></span>
+                                    <span class="byline">by <?php the_author(); ?></span>
+                                </div>
+                            </article>
+                        </a>
                     </div>
 
                 <?php }
@@ -140,7 +139,7 @@ get_header();
     <section class="sbanner-section dd-section">
         <div class="container">
             <div class="typewriter">
-                <h2 class="sbanner-title h2-global">If the story doesn't make sense, follow the money.</h2>
+                <h2 class="sbanner-title h2-global"><?= $pods_home->display('rss_title') ?></h2>
             </div>
             <?php
             // Use WordPress's built-in feed fetcher (SimplePie) - no API key required.
@@ -205,7 +204,8 @@ get_header();
                         <article class="sbanner-item">
                             <?php if (!empty($image_url)): ?>
                                 <div class="sbanner-item-image">
-                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($item->get_title()); ?>">
+                                    <img class="rss-img" width="253" height="253" src="<?php echo esc_url($image_url); ?>"
+                                        alt="<?php echo esc_attr($item->get_title()); ?>">
                                 </div>
                             <?php endif; ?>
 
@@ -229,13 +229,13 @@ get_header();
         <div class="container">
             <div class="newsletter-container">
                 <div class="typewriter">
-                    <h2 class="h2-global">Subscribe to our Newsletter</h2>
+                    <h2 class="h2-global"><?= $pods_home->display('newsletter_title') ?></h2>
                 </div>
                 <form class="newsletter-form" action="#" method="post">
                     <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address"
                         required>
                     <div class="newsletter-btn-holder">
-                        <button type="submit" class="newsletter-btn"><span>Subscribe</span></button>
+                        <button type="submit" class="newsletter-btn"><span>Join The List</span></button>
                     </div>
                 </form>
             </div>
