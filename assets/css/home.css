@@ -147,24 +147,48 @@ section.home-section.hero-section {
 .blog-section.blog-home {
 	background: #f2f2f2;
 }
+.blog-card-link {
+  text-decoration: none;
+  color: #000;
+}
 .blog-post-image {
-    width: 360px;
-    height: 270px;
-    object-fit: cover;
-	filter: hue-rotate(22deg) brightness(90%);
-	transition: all .4s ease;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  filter: hue-rotate(12deg) brightness(90%);
+  transition: all .4s ease;
 }
 .blog-post-image:hover {
 	filter: hue-rotate(0deg) brightness(100%);
 }
 .dd-blog-container {
-	margin: 15px 0;
+	margin: 15px 0 45px;
+}
+.dd-blog-container:last-child {
+  margin-bottom: 0;
+}
+.blog-card-link:hover .blog-post-image {
+  filter: hue-rotate(0deg) brightness(100%);
+}
+.blog-card-link:hover .main-link-style {
+  background-position: 0;
+}
+.blog-card-link:hover .main-link-style::before {
+  width: 100%;
+}
+.entry-content-p {
+  color: #000;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 15px 0;
 }
 /* RSS BANNER SECTION */
 .rss-img {
   width: 100%;
   border-radius: 5px;
   object-fit: cover;
+  filter: hue-rotate(12deg) brightness(90%);
+  transition: all 0.4s ease;
 }
 .sbanner-grid {
 	padding: 0 15px;
@@ -175,11 +199,15 @@ section.home-section.hero-section {
 .sbanner-item {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 15px;
   background: #f2f2f2;
   padding: 10px;
   border-radius: 15px;
+  height: 100%;
+}
+.sbanner-time {
+  margin-top: auto;
+  font-style: italic;
 }
 a.sbanner-a {
   color: #000;
@@ -189,6 +217,9 @@ a.sbanner-a {
 }
 a.sbanner-a:hover {
   color: #8627a3;
+}
+a.sbanner-a:hover .rss-img {
+  filter: hue-rotate(0deg) brightness(100%);
 }
 /* NEWSLETTER SECTION  */
 .newsletter-section {
@@ -295,22 +326,29 @@ input.newsletter-input {
 }
 /* RESPONSIVE */
 @media all and (min-width:992px) {
-	.dd-hero-article {
-		position: absolute;
-		width: 100%;
-		left: -70px;
-		margin-top: 90px;
-	}
-	.blog-container-2 article {
-		border: 1px solid #000;
-		padding: 10px;
-		box-shadow: 3px 3px #000;
-		transition: all .3s ease;
-	}
-	.blog-container-2:hover article {
-		box-shadow: 6px 6px #000;
-		translate: -2px -2px;
-	}
+  .dd-hero-article {
+    position: absolute;
+    width: 100%;
+    left: -70px;
+    margin-top: 90px;
+  }
+  .blog-container-2 article {
+    border: 1px solid #000;
+    padding: 10px;
+    box-shadow: 3px 3px #000;
+    transition: all .3s ease;
+  }
+  .blog-container-2:hover article {
+    box-shadow: 6px 6px #000;
+    translate: -2px -2px;
+  }
+  .blog-post-image {
+    width: 360px;
+    height: 270px;
+  }
+  .dd-blog-container {
+    margin: 15px 0
+  }
 }
 @media all and (min-width: 768px) {
 	.dd-section {

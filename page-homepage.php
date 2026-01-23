@@ -113,7 +113,9 @@ get_header();
                                     </h3>
                                 </div>
                                 <div class="entry-content">
-                                    <?php echo wp_trim_words(get_the_excerpt(), 29, '...'); ?>
+                                    <p class="entry-content-p">
+                                        <?php echo wp_trim_words(get_the_excerpt(), 29, '...'); ?>
+                                    </p>
                                 </div>
                                 <div class="entry-footer">
                                     <span class="posted-on"><?php echo esc_html($date); ?></span>
@@ -201,22 +203,22 @@ get_header();
                         }
                         ?>
 
-                        <article class="sbanner-item">
-                            <?php if (!empty($image_url)): ?>
-                                <div class="sbanner-item-image">
-                                    <img class="rss-img" width="253" height="253" src="<?php echo esc_url($image_url); ?>"
-                                        alt="<?php echo esc_attr($item->get_title()); ?>">
-                                </div>
-                            <?php endif; ?>
+                        <a class="sbanner-a" href="<?php echo esc_url($item->get_permalink()); ?>" target="_blank"
+                            rel="noopener noreferrer">
+                            <article class="sbanner-item">
+                                <?php if (!empty($image_url)): ?>
+                                    <div class="sbanner-item-image">
+                                        <img class="rss-img" width="253" height="253" src="<?php echo esc_url($image_url); ?>"
+                                            alt="<?php echo esc_attr($item->get_title()); ?>">
+                                    </div>
+                                <?php endif; ?>
 
-                            <a class="sbanner-a" href="<?php echo esc_url($item->get_permalink()); ?>" target="_blank"
-                                rel="noopener noreferrer">
                                 <?php echo esc_html($item->get_title()); ?>
-                            </a>
-                            <time class="sbanner-time" datetime="<?php echo esc_attr($item->get_date('c')); ?>">
-                                <?php echo esc_html($item->get_date('j M, Y')); ?>
-                            </time>
-                        </article>
+                                <time class="sbanner-time" datetime="<?php echo esc_attr($item->get_date('c')); ?>">
+                                    <?php echo esc_html($item->get_date('j M, Y')); ?>
+                                </time>
+                            </article>
+                        </a>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
