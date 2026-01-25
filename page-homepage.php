@@ -183,14 +183,8 @@ get_header();
                         // 2) Try media:thumbnail (media RSS)
                         if (empty($image_url)) {
                             $media = $item->get_item_tags('http://search.yahoo.com/mrss/', 'thumbnail');
-                            if ($media && isset($media[0]['attribs'])) {
-                                // look for url attribute in attribs
-                                foreach ($media[0]['attribs'] as $attr_group) {
-                                    if (isset($attr_group['url'])) {
-                                        $image_url = $attr_group['url'];
-                                        break;
-                                    }
-                                }
+                            if (!empty($media[0]['attribs']['']['url'])) {
+                                $image_url = $media[0]['attribs']['']['url'];
                             }
                         }
 
@@ -200,6 +194,11 @@ get_header();
                             if (preg_match('/<img[^>]+src=["\']([^"\']+)["\']/i', $desc, $matches)) {
                                 $image_url = $matches[1];
                             }
+                        }
+
+                        // 4) Last resort: use stock image from media library
+                        if (empty($image_url)) {
+                            $image_url = wp_get_attachment_image_url(71, 'thumbnail'); // Replace 71 with your stock image attachment ID
                         }
                         ?>
 
