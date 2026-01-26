@@ -33,8 +33,14 @@
 					</div><!-- .site-branding -->
 
 					<nav id="site-navigation" class="d-navigation navbar-default navbar">
+
+						<div class="search-container">
+							<?php get_search_form(); ?>
+						</div>
+
 						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed d-x-collapse" data-toggle="collapse" data-target="#d-collapse-menu">
+							<button type="button" class="navbar-toggle collapsed d-x-collapse" data-toggle="collapse"
+								data-target="#d-collapse-menu">
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
@@ -45,7 +51,7 @@
 							<?php
 							wp_nav_menu(array(
 								'theme_location' => 'menu-1',
-								'menu_id'        => 'primary-menu'
+								'menu_id' => 'primary-menu'
 							));
 							?>
 						</div>

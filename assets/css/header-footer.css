@@ -156,6 +156,100 @@ nav#site-navigation {
   border-bottom: 1px solid #FFF;
 }
 /* RESPONSIVE */
+/* MAX WIDTH */
+@media all and (max-width:991px) {
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu li:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    #d-collapse-menu {
+        position: fixed;
+        right: 0;
+        width: 50%;
+        background: #000000d1;
+        z-index: 999;
+        border: 1px solid #FFF;
+        padding: 70px 15px;
+    }
+
+    .navbar-toggle.d-x-collapse {
+        right: 50%;
+        z-index: 99;
+        background: #000000d1;
+        border-radius: 0;
+    }
+
+    .d-navigation.navbar-default.navbar.toggled .navbar-toggle.navbar-toggle.d-x-collapse {
+        position: fixed;
+    }
+
+    .d-navigation.navbar-default.navbar.toggled .navbar-toggle .icon-bar {
+        background-color: #FFF;
+        transition: all 0.3s ease;
+    }
+
+    .d-navigation.navbar-default.navbar.toggled .navbar-toggle .icon-bar:nth-child(1) {
+        transform: rotate(45deg);
+        position: relative;
+        top: 9px;
+    }
+
+    .d-navigation.navbar-default.navbar.toggled .navbar-toggle .icon-bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .d-navigation.navbar-default.navbar.toggled .navbar-toggle .icon-bar:nth-child(3) {
+        transform: rotate(-45deg);
+        position: relative;
+        top: -9px;
+    }
+
+    .navbar-toggle.d-x-collapse.collapsed {
+        border: 1px solid #FFF;
+        height: 50px;
+        width: 50px;
+        margin: 0;
+        transition: background-color 0.3s ease;
+    }
+
+    .navbar-default .navbar-toggle {
+        border: 1px solid #FFF;
+        height: 50px;
+        width: 50px;
+        margin: 0;
+    }
+
+    .navbar-toggle.d-x-collapse.collapsed .icon-bar:nth-child(2) {
+        width: 60%;
+    }
+
+    .navbar-default .navbar-toggle:hover {
+        background-color: #ffffffb7!important;
+    }
+
+    .navbar-default .navbar-toggle.collapsed .icon-bar {
+        background-color: #FFF;
+        width: 100%;
+        height: 5px;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #FFF;
+        width: 100%;
+        height: 5px;
+    }
+
+    .navbar-default .navbar-toggle:focus {
+        background-color: #000000d1 !important;
+    }
+}
+/* MIN WIDTH */
 @media all and (min-width:768px) {
     #colophon {
         padding: 60px 15px;
