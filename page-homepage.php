@@ -43,7 +43,6 @@ get_header();
                                 <a href="<?php the_permalink(); ?>" class="post-title-a main-link-style"
                                     style="--font-color:#000;">
                                     <h1 class="entry-title"><?php the_title(); ?></h1>
-                                    <!-- <h1 class="entry-title"><?= $pods_home->display('hero_title') ?></h1> -->
                                 </a>
                             </div>
                             <div class="entry-content-main">
@@ -54,7 +53,7 @@ get_header();
                             <div class="entry-footer-main">
                                 <span class="posted-on"><?php the_date('j M, Y'); ?></span>
                                 <span class="byline">by <?php the_author(); ?></span>
-                                <!-- <span class="hero-category"><?php the_category() ?></span> -->
+                                <!-- <span class="hero-category"><//?php the_category() ?></span> -->
                             </div>
                         </article>
                     </div>
