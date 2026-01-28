@@ -85,10 +85,14 @@ nav#site-navigation {
     width: 100%;
 }
 /* Search Bar */
+.search-container {
+  overflow: hidden;
+}
 .search-box {
     background-color: #FFF;
     height: 45px;
     border-radius: 40px;
+    display: flex;
 }
 .search-btn {
     color: #FFF;

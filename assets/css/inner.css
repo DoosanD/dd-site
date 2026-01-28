@@ -1,0 +1,10 @@
+/* SINGLE POST */
+.post-hero {
+  background: linear-gradient(180deg, rgb(0, 0, 0) 50%, rgb(255, 255, 255) 50%);
+  padding: 30px 0;
+}
+.single-hero-img {
+  height: 420px;
+  width: 100%;
+  object-fit: contain;
+}

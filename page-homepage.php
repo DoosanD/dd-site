@@ -53,7 +53,6 @@ get_header();
                             <div class="entry-footer-main">
                                 <span class="posted-on"><?php the_date('j M, Y'); ?></span>
                                 <span class="byline">by <?php the_author(); ?></span>
-                                <!-- <span class="hero-category"><//?php the_category() ?></span> -->
                             </div>
                         </article>
                     </div>
