@@ -94,18 +94,18 @@ section.home-section.hero-section {
 	box-shadow: -1px 0px 10px 2px rgb(255 255 255 / 55%);
 }
 .main-link-style {
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.3s;
-    background-image: linear-gradient( to right, #2c38bf, #8627a3 50%, var(--font-color,#FFF) 50% );
-    background-size: 200% 100%;
-    background-position: -100%;
-    display: inline-block;
-    padding: 5px 0;
-    position: relative;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.3s;
+  background-image: linear-gradient(to right, #2c38bf, #8627a3 50%, var(--font-color, #FFF) 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
 }
 .main-link-style:hover{
 	background-position: 0;

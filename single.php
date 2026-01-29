@@ -25,16 +25,26 @@ $single_hero = get_the_post_thumbnail_url();
 		<div class="post-title container">
 			<h1 class="post-title-h1"><?php single_post_title(); ?></h1>
 			<div class="post-title-description">
+				<p class="post-author">
+					<?php
+					$post = get_post();
+					$author_id = $post->post_author;
+					$author_name = get_the_author_meta('display_name', $author_id);
+					echo !empty($author_name) ? $author_name : 'Unknown Author';
+					?>
+				</p>
 				<p class="post-date">
-					Published on:
 					<?php echo get_the_date(); ?>
 				</p>
-				<p class="post-author">
-					By:
-					<?php the_author(); ?>
-				</p>
 				<p class="post-category">
-					<?php the_category(); ?>
+					<?php
+					$categories = get_the_category();
+					if (!empty($categories)) {
+						foreach ($categories as $category) {
+							echo '<a href="' . esc_url(get_category_link($category->term_id)) . '" class="category-link">' . esc_html($category->name) . '</a>';
+						}
+					}
+					?>
 				</p>
 			</div>
 		</div>
