@@ -9,6 +9,7 @@
 
 get_header();
 $single_hero = get_the_post_thumbnail_url();
+$single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunning_curvaceous_woman_with_cascading_locks_of_ha_3.jpg';
 ?>
 
 <main id="primary" class="site-main">
@@ -16,7 +17,11 @@ $single_hero = get_the_post_thumbnail_url();
 	<!-- Hero Image Section -->
 
 	<section class="post-hero">
-		<img class="single-hero-img" src="<?php echo $single_hero; ?>" alt="Hero Image">
+		<img class="single-hero-img" src="<?php if (empty($single_hero)) {
+			echo $single_hero_backup;
+		} else {
+			echo $single_hero;
+		} ?>" alt="Hero Image">
 	</section>
 
 	<!-- Title Section -->

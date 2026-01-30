@@ -160,3 +160,11 @@
   height: 2px;
   margin: 40px 0;
 }
+/* MIN WIDTH */
+@media all and (min-width: 768px) {
+.blog-post {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 15px;
+  }
+}
