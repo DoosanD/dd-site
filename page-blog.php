@@ -11,6 +11,7 @@
 get_header();
 $single_hero = get_the_post_thumbnail_url();
 $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunning_curvaceous_woman_with_cascading_locks_of_ha_3.jpg';
+$pods = function_exists('pods') ? pods('inner_pages') : null;
 ?>
 
 <main id="primary" class="site-main">
@@ -18,6 +19,9 @@ $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunni
     <!-- Hero Image Section -->
 
     <section class="post-hero">
+        <h1 class="page-hero-title">
+            <?= $pods->display(name: 'recources_title') ?>
+        </h1>
         <img class="single-hero-img" src="<?php if (empty($single_hero)) {
             echo $single_hero_backup;
         } else {
@@ -32,9 +36,13 @@ $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunni
             <div class="blog-posts-holder">
                 <div class="blog-posts-main col-md-8">
                     <?php
+                    // Get current page number
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
                     $blog_query = new WP_Query(array(
                         'post_type' => 'post',
                         'posts_per_page' => 10,
+                        'paged' => $paged, // Add this line
                     ));
 
                     if ($blog_query->have_posts()):
@@ -42,22 +50,17 @@ $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunni
                             $blog_query->the_post();
                             ?>
                             <article id="post-<?php the_ID(); ?>" <?php post_class('blog-post'); ?>>
-
                                 <?php
-                                // Set your fallback image ID here (get this from Media Library)
-                                $fallback_image_id = 71; // Replace 123 with your actual image ID
-                        
+                                $fallback_image_id = 71;
                                 if (has_post_thumbnail()):
-                                    // Show featured image if it exists
                                     ?>
                                     <div class="blog-post-thumbnail">
                                         <a href="<?php the_permalink(); ?>">
-                                            <?php the_post_thumbnail('medium', ['alt' => get_the_title()]); ?>
+                                            <?php the_post_thumbnail('full', ['alt' => get_the_title(), 'class' => 'blog-post-thumbnail-img']); ?>
                                         </a>
                                     </div>
                                 <?php elseif ($fallback_image_id):
-                                    // Show fallback image if no featured image
-                                    $fallback_image = wp_get_attachment_image($fallback_image_id, 'medium', false, ['alt' => get_the_title()]);
+                                    $fallback_image = wp_get_attachment_image($fallback_image_id, 'full', false, ['alt' => get_the_title(), 'class' => 'blog-post-thumbnail-img']);
                                     if ($fallback_image):
                                         ?>
                                         <div class="blog-post-thumbnail">
@@ -70,13 +73,11 @@ $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunni
                                 endif;
                                 ?>
                                 <div class="blog-post-information">
-
                                     <h2 class="blog-post-title">
-                                        <a href="<?php the_permalink(); ?>">
+                                        <a href="<?php the_permalink(); ?>" class="blog-post-link">
                                             <?php the_title(); ?>
                                         </a>
                                     </h2>
-
                                     <div class="blog-post-meta">
                                         <span class="blog-post-date">
                                             <?php echo get_the_date(); ?>
@@ -85,15 +86,28 @@ $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunni
                                             <?php the_author(); ?>
                                         </span>
                                     </div>
-
                                     <div class="blog-post-excerpt">
                                         <?php the_excerpt(); ?>
                                     </div>
-
                                 </div>
                             </article>
                             <?php
                         endwhile;
+
+                        // Add pagination links here
+                        ?>
+                        <div class="pagination">
+                            <?php
+                            echo paginate_links(array(
+                                'total' => $blog_query->max_num_pages,
+                                'current' => $paged,
+                                'prev_text' => __('« Previous', 'd-theme'),
+                                'next_text' => __('Next »', 'd-theme'),
+                            ));
+                            ?>
+                        </div>
+                        <?php
+
                         wp_reset_postdata();
                     else:
                         ?>

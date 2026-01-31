@@ -4,6 +4,7 @@
  *
  * @package D_Theme
  */
+$pods = function_exists('pods') ? pods('sidebar') : null;
 ?>
 
 
@@ -12,7 +13,9 @@
     <div class="category-sidebar-menu">
         <!-- Recent Posts -->
         <section class="widget widget_recent_entries">
-            <h2 class="widget-title">Recent Posts</h2>
+            <h2 class="widget-title">
+                <?= $pods->display(name: 'recent_posts_title') ?>
+            </h2>
             <ul>
                 <?php
                 $recent_posts = wp_get_recent_posts(array(
@@ -31,7 +34,9 @@
 
         <!-- Archives -->
         <section class="widget widget_archive">
-            <h2 class="widget-title">Archives</h2>
+            <h2 class="widget-title">
+                <?= $pods->display(name: 'archives_title') ?>
+            </h2>
             <ul>
                 <?php wp_get_archives(array(
                     'type' => 'monthly',
@@ -44,7 +49,7 @@
 
         <!-- Categories -->
         <section class="widget widget_categories">
-            <h2 class="widget-title">Categories</h2>
+            <h2 class="widget-title"><?= $pods->display(name: 'categories_title') ?></h2>
             <ul>
                 <?php
                 $categories = get_categories();
