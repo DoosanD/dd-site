@@ -35,7 +35,7 @@ $pods = function_exists('pods') ? pods('inner_pages') : null;
         <div class="container">
             <div class="about-content-holder">
                 <div class="about-content-main">
-
+                    <?= $pods->display(name: 'about_content') ?>
                 </div>
             </div>
         </div>
