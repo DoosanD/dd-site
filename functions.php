@@ -48,10 +48,11 @@ function d_theme_setup()
 	 */
 	add_theme_support('post-thumbnails');
 
-	// This theme uses wp_nav_menu() in one location.
+	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'd-theme'),
+			'footer-menu' => esc_html__('Footer', 'd-theme'),
 		)
 	);
 
@@ -104,6 +105,26 @@ function d_theme_setup()
 }
 add_action('after_setup_theme', 'd_theme_setup');
 
+/**
+ * Add class to footer menu links
+ */
+function d_theme_footer_menu_link_attributes($atts, $item, $args)
+{
+	if ($args->theme_location == 'footer-menu') {
+		$atts['class'] = 'footer-content-link';
+	}
+	return $atts;
+}
+// Add Dynamic Year to Footer Menu
+add_filter('nav_menu_link_attributes', 'd_theme_footer_menu_link_attributes', 10, 3);
+add_filter('wp_nav_menu_items', 'add_copyright_to_footer_menu', 10, 2);
+function add_copyright_to_footer_menu($items, $args)
+{
+	if ($args->theme_location == 'footer-menu') {
+		$items = '<li class="footer-content-year">©' . date("Y") . '</li>' . $items;
+	}
+	return $items;
+}
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *

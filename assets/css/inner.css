@@ -243,7 +243,8 @@ div.pagination {
   background: #000;
   border-radius: 10px;
 }
-.widget-title {
+.widget-title,
+.widgettitle {
   font-size: 4rem;
   color: #fff;
   border-bottom: 1px solid #5860bb;
@@ -266,6 +267,11 @@ div.pagination {
 }
 .widget ul li {
   padding: 10px 15px;
+  display: flex;
+  gap: 15px;
+  color: #FFF;
+  font-weight: 500;
+  align-items: center;
 }
 .widget ul li:not(:last-child) {
   border-bottom: 1px solid #5860bb;
@@ -281,6 +287,47 @@ div.pagination {
 }
 .widget ul li a:hover {
   animation: shadow-dance 2s infinite;
+}
+/* ABOUT PAGE */
+.about-content-holder {
+  padding: 60px 15px;
+}
+/* 404 PAGE */
+.error-404 {
+  padding: 60px 15px;
+  text-align: center;
+}
+.error-404 input.search-txt {
+  width:100%;
+  background: #f2f2f2;
+  padding: 10px 15px;
+  height: 60px;
+}
+.error-404 input.search-txt:hover {
+  width: 100%;
+}
+.error-404 input.search-txt:focus {
+  outline: 2px solid #8627a3;
+}
+.error-404 .search-btn {
+  display: none;
+}.content-404 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.archive-p {
+  margin:15px 0;
+  font-size: 1.75rem;
+  color:#fff;
+}
+#archives-dropdown--1 {
+  padding: 15px;
+  font-size: 3rem;
+  height: 100%;
+  border-radius: 0 0 10px 10px;
+  border: none;
 }
 /* MIN WIDTH */
 @media all and (min-width: 768px) {

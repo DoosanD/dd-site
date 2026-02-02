@@ -17,14 +17,13 @@
 		<div class="footer-logo"><?php the_custom_logo(); ?></div>
 		<div class="container">
 			<div class="footer-inner-holder">
-				<ul class="footer-content-list">
-					<li class="footer-content-year">©<?php echo date("Y"); ?></li>
-					<li><a href="" class="footer-content-link">About</a></li>
-					<li><a href="" target="_blank" rel="noopener noreferrer" class="footer-content-link">Privacy Policy</a></li>
-					<li><a href="" target="_blank" rel="noopener noreferrer" class="footer-content-link">Contact</a></li>
-					<li><a href="" target="_blank" rel="noopener noreferrer" class="footer-content-link">LinkedIn</a></li>
-					<li><a href="" target="_blank" rel="noopener noreferrer" class="footer-content-link">Twitter</a></li>
-				</ul>
+				<?php
+				wp_nav_menu(array(
+					'theme_location' => 'footer-menu',
+					'menu_id' => 'footer-menu',
+					'menu_class' => 'footer-content-list'
+				));
+				?>
 			</div>
 		</div>
 	</div><!-- .site-info -->

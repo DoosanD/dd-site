@@ -14,26 +14,34 @@
  */
 
 get_header();
+$single_hero = get_the_post_thumbnail_url();
+$single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunning_curvaceous_woman_with_cascading_locks_of_ha_3.jpg';
 ?>
 
 <main id="primary" class="site-main">
 
-	<?php
-	while (have_posts()):
-		the_post();
+	<!-- Hero Image Section -->
 
-		get_template_part('template-parts/content', 'page');
+	<section class="post-hero">
+		<h1 class="page-hero-title">
+			<?php the_title(); ?>
+		</h1>
+		<img class="single-hero-img" src="<?php if (empty($single_hero)) {
+			echo $single_hero_backup;
+		} else {
+			echo $single_hero;
+		} ?>" alt="Hero Image">
+	</section>
 
-		// If comments are open or we have at least one comment, load up the comment template.
-		if (comments_open() || get_comments_number()):
-			comments_template();
-		endif;
+	<!-- Content Section -->
 
-	endwhile;  // End of the loop.
-	?>
+	<section class="single-content-section">
+		<div class="post-content">
+			<?php the_content(); ?>
+		</div>
+	</section>
 
 </main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

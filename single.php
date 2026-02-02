@@ -61,7 +61,6 @@ $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunni
 		<div class="post-content"><?php the_content(); ?></div>
 	</section>
 
-
 </main><!-- #main -->
 
 <?php
