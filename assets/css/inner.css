@@ -10,6 +10,7 @@
   width: 100%;
   object-fit: cover;
   padding: 0 15px;
+  filter: brightness(80%);
 }
 .single-main-section {
   padding: 15px 15px 30px;
@@ -171,7 +172,7 @@
   color: #FFF;
   margin: auto;
   inset: 0;
-  font-size: 5rem;
+  font-size: 4rem;
   display: flex;
   align-items: center;
   text-align: center;
@@ -179,6 +180,7 @@
   text-transform: uppercase;
   letter-spacing: 5px;
   text-shadow: #cec49c 1px 0 10px;
+  z-index: 2;
 }
 .blog-post {
   display: flex;
@@ -302,6 +304,7 @@ div.pagination {
   background: #f2f2f2;
   padding: 10px 15px;
   height: 60px;
+  border-radius: 10px;
 }
 .error-404 input.search-txt:hover {
   width: 100%;
@@ -311,7 +314,11 @@ div.pagination {
 }
 .error-404 .search-btn {
   display: none;
-}.content-404 {
+}
+.error-404 .search-box {
+  height: 100%;
+}
+.content-404 {
   display: flex;
   flex-direction: column;
   gap: 30px;

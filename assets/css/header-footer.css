@@ -41,6 +41,9 @@ nav#site-navigation {
     align-items: center;
     justify-content: center;
 }
+.nav-menu li {
+    position: relative;
+} 
 #primary-menu li a {
     color: #FFF;
     text-decoration: none;
@@ -83,6 +86,41 @@ nav#site-navigation {
 }
 #primary-menu li a:hover::before {
     width: 100%;
+}
+/* SUB MENU */
+.sub-menu {
+    display: none; /* Hide the submenu by default */
+    list-style-type: none;
+    position: absolute; /* Position the submenu relative to the parent li */
+    top: 100%; /* Place it directly below the parent link */
+    min-width: 160px;
+    z-index: 37; /* Ensure submenu appears above other content */
+}
+.sub-menu li {
+    margin: 10px 0;
+}
+.menu-item-has-children:hover .sub-menu {
+    display: block !important; /* Show the submenu on hover */
+}
+.menu-item-has-children .current-lang {
+    display: none;
+}
+img[alt="English"] {
+    width: 30px !important;
+    height: 30px !important;
+    content: url('http://localhost/DiverseDialogues/wp-content/uploads/2026/02/united-kingdom.png');
+    /* change link on live site */
+}
+img[alt="Српски језик"] {
+    width: 30px !important;
+    height: 30px !important;
+    content: url('http://localhost/DiverseDialogues/wp-content/uploads/2026/02/world.png');
+    /* change link on live site */
+}
+.nav-menu img {
+    outline: 1px solid #FFF;
+    outline-offset: 7.5px;
+    border-radius: 50%;
 }
 /* Search Bar */
 .search-container {
