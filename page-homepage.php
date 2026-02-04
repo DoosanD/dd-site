@@ -7,7 +7,8 @@
  * 
  * @package D_Theme
  */
-$pods_home = function_exists('pods') ? pods('home') : null;
+$current_lang = function_exists('pll_current_language') ? pll_current_language('slug') : 'en';
+$pods_home = function_exists('pods') ? pods('home_' . $current_lang) : null;
 get_header();
 ?>
 

@@ -20,7 +20,7 @@ $pods = function_exists('pods') ? pods('inner_pages') : null;
 
     <section class="post-hero">
         <h1 class="page-hero-title">
-            <?= $pods->display(name: 'recources_title') ?>
+            <?= get_the_title(); ?>
         </h1>
         <img class="single-hero-img" src="<?php if (empty($single_hero)) {
             echo $single_hero_backup;
