@@ -4,17 +4,16 @@
  *
  * @package D_Theme
  */
-$pods = function_exists('pods') ? pods('sidebar') : null;
 ?>
 
 
-<?php if (is_page(array(27)) or is_archive()) { ?>
+<?php if (is_page(array(27, 157)) or is_archive()) { ?>
 
     <div class="category-sidebar-menu">
         <!-- Recent Posts -->
         <section class="widget widget_recent_entries">
             <h2 class="widget-title">
-                <?= $pods->display(name: 'recent_posts_title') ?>
+                Recent Posts
             </h2>
             <ul>
                 <?php
@@ -35,7 +34,7 @@ $pods = function_exists('pods') ? pods('sidebar') : null;
         <!-- Archives -->
         <section class="widget widget_archive">
             <h2 class="widget-title">
-                <?= $pods->display(name: 'archives_title') ?>
+                Archives
             </h2>
             <ul>
                 <?php wp_get_archives(array(
@@ -49,7 +48,9 @@ $pods = function_exists('pods') ? pods('sidebar') : null;
 
         <!-- Categories -->
         <section class="widget widget_categories">
-            <h2 class="widget-title"><?= $pods->display(name: 'categories_title') ?></h2>
+            <h2 class="widget-title">
+                Categories
+            </h2>
             <ul>
                 <?php
                 $categories = get_categories();

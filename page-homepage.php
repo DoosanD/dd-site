@@ -8,7 +8,7 @@
  * @package D_Theme
  */
 $current_lang = function_exists('pll_current_language') ? pll_current_language('slug') : 'en';
-$pods_home = function_exists('pods') ? pods('home_' . $current_lang) : null;
+$ACF = get_fields();
 get_header();
 ?>
 
@@ -18,13 +18,29 @@ get_header();
     <section class="home-section hero-section dd-section">
         <?php
         // Start the WordPress loop
-        $args = array(
+        // Ensure we request posts for the current Polylang language
+        $fallback_image_id = 45; // Replace with a real attachment ID for a default image
+        
+        $args_langged = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
             'posts_per_page' => 1, // Only retrieve the latest post
             'orderby' => 'date',
-            'order' => 'DESC'
+            'order' => 'DESC',
+            'lang' => $current_lang,
+            'suppress_filters' => false,
+            'ignore_sticky_posts' => 1,
         );
 
-        $query = new WP_Query($args);
+        $query = new WP_Query($args_langged);
+
+        // If no posts found for the current language, fall back to the latest post regardless of language
+        if (!$query->have_posts()) {
+            wp_reset_postdata();
+            $args_fallback = $args_langged;
+            unset($args_fallback['lang']);
+            $query = new WP_Query($args_fallback);
+        }
 
         if ($query->have_posts()) {
             while ($query->have_posts()) {
@@ -35,6 +51,12 @@ get_header();
                         <div class="hero-image-holder">
                             <?php if (has_post_thumbnail()): ?>
                                 <?php the_post_thumbnail('full', array('class' => 'hero-post-image')); ?>
+                            <?php else:
+                                $fallback_url = wp_get_attachment_image_url($fallback_image_id, 'full');
+                                if ($fallback_url): ?>
+                                    <img src="<?php echo esc_url($fallback_url); ?>" class="hero-post-image"
+                                        alt="<?php the_title_attribute(); ?>">
+                                <?php endif; ?>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -75,19 +97,34 @@ get_header();
     <section class="blog-section blog-home dd-section">
         <div class="container">
             <div class="typewriter">
-                <h2 class="h2-global"><?= $pods_home->display(name: 'blog_title') ?></h2>
+                <h2 class="h2-global"><?= $ACF['blog_title']; ?></h2>
             </div>
             <?php
             // Start the WordPress loop
+            // Use a Polylang-aware category ID instead of a fixed slug so translated
+            // categories are respected when switching languages.
+            $cat_slug = 'popular'; // base slug (English) or primary slug to translate
+            $cat = get_category_by_slug($cat_slug);
+            $cat_id = 0;
+            if ($cat) {
+                $cat_id = $cat->term_id;
+                if (function_exists('pll_get_term')) {
+                    $translated = pll_get_term($cat_id, $current_lang);
+                    if ($translated) {
+                        $cat_id = $translated;
+                    }
+                }
+            }
+
             $args = array(
                 'posts_per_page' => 3, // Number of posts per page
                 'orderby' => 'date', // Order by date (most recent first)
                 'order' => 'DESC', // Order descending
-                'category_name' => 'popular' // Replace 'your-category-slug' with the slug of your category
             );
 
-            $query = new WP_Query($args);
-
+            if (!empty($cat_id)) {
+                $args['cat'] = (int) $cat_id; // use category ID (translated)
+            }
 
             $query = new WP_Query($args);
 
@@ -104,6 +141,12 @@ get_header();
                                 <div class="blog-image-holder">
                                     <?php if (has_post_thumbnail()): ?>
                                         <?php the_post_thumbnail('full', array('class' => 'blog-post-image')); ?>
+                                    <?php else:
+                                        $fallback_url = wp_get_attachment_image_url($fallback_image_id, 'full');
+                                        if ($fallback_url): ?>
+                                            <img src="<?php echo esc_url($fallback_url); ?>" class="blog-post-image"
+                                                alt="<?php the_title_attribute(); ?>">
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
                                 <div class="entry-header">
@@ -140,7 +183,7 @@ get_header();
     <section class="sbanner-section dd-section">
         <div class="container">
             <div class="typewriter">
-                <h2 class="sbanner-title h2-global"><?= $pods_home->display('rss_title') ?></h2>
+                <h2 class="sbanner-title h2-global"><?= $ACF['rss_title'] ?></h2>
             </div>
             <?php
             // Use WordPress's built-in feed fetcher (SimplePie) - no API key required.
@@ -229,7 +272,7 @@ get_header();
         <div class="container">
             <div class="newsletter-container">
                 <div class="typewriter">
-                    <h2 class="h2-global"><?= $pods_home->display('newsletter_title') ?></h2>
+                    <h2 class="h2-global"><?= $ACF['newsletter_title'] ?></h2>
                 </div>
                 <form class="newsletter-form" action="#" method="post">
                     <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address"

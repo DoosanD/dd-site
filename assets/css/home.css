@@ -25,6 +25,7 @@ body h4,
 body h5,
 body h6,
 body span{
+  text-wrap: balance;
 	padding: 0px;
 	margin: 0px;
 	font-family: var(--FONT-FAMILY), sans-serif;

@@ -17,7 +17,7 @@ $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunni
 	<!-- Hero Image Section -->
 
 	<section class="post-hero">
-		<img class="single-hero-img" src="<?php if (empty($single_hero)) {
+		<img class="single-hero-img single-post-img" src="<?php if (empty($single_hero)) {
 			echo $single_hero_backup;
 		} else {
 			echo $single_hero;

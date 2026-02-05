@@ -12,6 +12,9 @@
   padding: 0 15px;
   filter: brightness(80%);
 }
+.single-hero-img.single-post-img {
+  filter: brightness(100%);
+}
 .single-main-section {
   padding: 15px 15px 30px;
   margin-bottom: 40px;
@@ -70,6 +73,7 @@
   font-weight: 500;
   overflow-wrap: break-word;
   word-break: break-word;
+  text-wrap: pretty;
   color:#000;
 }
 .post-content p:first-child {

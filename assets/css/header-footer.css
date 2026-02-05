@@ -97,7 +97,7 @@ nav#site-navigation {
     z-index: 37; /* Ensure submenu appears above other content */
 }
 .sub-menu li {
-    margin: 10px 0;
+    margin: 8px 0;
 }
 .menu-item-has-children:hover .sub-menu {
     display: block !important; /* Show the submenu on hover */
