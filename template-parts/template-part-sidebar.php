@@ -13,7 +13,9 @@
         <!-- Recent Posts -->
         <section class="widget widget_recent_entries">
             <h2 class="widget-title">
-                Recent Posts
+                <?php
+                echo (pll_current_language() === 'en') ? 'Recent Posts' : 'Недавне Објаве';
+                ?>
             </h2>
             <ul>
                 <?php
@@ -34,7 +36,9 @@
         <!-- Archives -->
         <section class="widget widget_archive">
             <h2 class="widget-title">
-                Archives
+                <?php
+                echo (pll_current_language() === 'en') ? 'Archives' : 'Архиве';
+                ?>
             </h2>
             <ul>
                 <?php wp_get_archives(array(
@@ -49,7 +53,9 @@
         <!-- Categories -->
         <section class="widget widget_categories">
             <h2 class="widget-title">
-                Categories
+                <?php
+                echo (pll_current_language() === 'en') ? 'Categories' : 'Категорије';
+                ?>
             </h2>
             <ul>
                 <?php

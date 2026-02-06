@@ -58,7 +58,7 @@ $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunni
 				<?php
 				/* translators: %1$s: smiley */
 				$d_theme_archive_content = '<p class="archive-p">' . sprintf(esc_html__('Try looking in the monthly archives. %1$s', 'd-theme'), convert_smilies(':)')) . '</p>';
-				the_widget('WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$d_theme_archive_content");
+				the_widget('WP_Widget_Archives', array('dropdown' => 1), array('after_title' => "</h2>$d_theme_archive_content"));
 
 				the_widget('WP_Widget_Tag_Cloud');
 				?>
