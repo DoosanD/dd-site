@@ -25,6 +25,7 @@
   line-height: .95;
   margin: 0 0 30px;
   text-transform: capitalize;
+  color:#000;
 }
 .post-title-description {
   border-top:2px solid #8627a3;
@@ -43,6 +44,7 @@
 }
 .post-category a{
   transition: all 0.3s ease;
+  color: #2c38bf;
 }
 .post-category a:hover {
   color: #8627a3;
@@ -343,6 +345,254 @@ div.pagination {
   height: 100%;
   border-radius: 0 0 10px 10px;
   border: none;
+}
+/* FLOATING BUTTON + Accessibility Options */
+/* Hide all checkboxes and radio buttons */
+#accessibility-toolbar input[type="checkbox"],
+#accessibility-toolbar input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Floating button */
+#accessibility-toolbar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.accessibility-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #000;
+    color: #FFF;
+    border: 2px solid #FFF;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.accessibility-button:hover {
+    background: #000000d6;
+    transform: scale(1.1);
+}
+
+/* Panel */
+.accessibility-panel {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+/* Show panel when toggle is checked */
+#accessibility-toggle:checked ~ .accessibility-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.accessibility-panel h3 {
+    margin: 0 0 20px 0;
+    font-size: 22px;
+    color: #000;
+    border-bottom: 2px solid #8627a3;
+    padding-bottom: 10px;
+}
+
+.accessibility-option {
+    margin-bottom: 20px;
+}
+
+.option-label {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 16px;
+}
+
+/* Font Size Radio Buttons */
+.font-size-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.font-size-controls label {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #8627a341;
+    background: #f5f5f5;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.font-size-controls input:checked + label {
+    background: #8627a3;
+    color: #fff;
+    border-color: #8627a3;
+}
+
+.font-size-controls label:hover {
+    border-color: #8627a3;
+}
+
+/* Toggle Checkboxes */
+.toggle-label {
+    display: block;
+    padding: 12px 15px;
+    background: #f5f5f5;
+    border: 2px solid #8627a341;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
+    padding-left: 45px;
+}
+
+.toggle-label::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.toggle-label::after {
+    content: '✓';
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+    background: #8627a341;
+    border-color: #8627a341;
+}
+
+.toggle-checkbox:checked + .toggle-label::before {
+    background: #8627a3;
+    border-color: #8627a3;
+}
+
+.toggle-checkbox:checked + .toggle-label::after {
+    opacity: 1;
+}
+
+.toggle-label:hover {
+    border-color: #8627a3;
+}
+
+/* Font Size Changes - Target only .post-content p */
+.post-content p {
+    font-size: 2.125rem; /* Default base size */
+    line-height: 1.538;
+}
+
+body:has(#font-normal:checked) .post-content p {
+    font-size: 2.125rem !important;
+}
+
+body:has(#font-larger:checked) .post-content p {
+    font-size: 3.25rem !important;
+}
+
+body:has(#font-largest:checked) .post-content p {
+    font-size: 4.5rem !important;
+}
+
+/* High Contrast Mode */
+body:has(#high-contrast:checked) {
+    background: #000 !important;
+    color: #fff !important;
+}
+body:has(#high-contrast:checked) .post-hero {
+    background: linear-gradient(180deg, #000 50%, #fff 50%) !important;
+}
+body:has(#high-contrast:checked) .accessibility-panel {
+  border:2px solid #fff !important;
+}
+body:has(#high-contrast:checked) *:not(img, .icon-bar,#site-navigation) {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+}
+
+body:has(#high-contrast:checked) a {
+    color: #ffff00 !important;
+    text-decoration: underline !important;
+}
+
+body:has(#high-contrast:checked) button,
+body:has(#high-contrast:checked) input,
+body:has(#high-contrast:checked) select,
+body:has(#high-contrast:checked) textarea {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+
+body:has(#high-contrast:checked) .font-size-controls label,
+body:has(#high-contrast:checked) .toggle-label {
+    background: #000 !important;
+}
+
+body:has(#high-contrast:checked) img {
+    filter: contrast(1.2) brightness(1.1);
+}
+
+/* Reading Mode */
+body:has(#reading-mode:checked) .post-hero {
+    background: linear-gradient(180deg, rgb(0, 0, 0) 50%, rgb(244, 236, 216) 50%) !important;
+}
+body:has(#reading-mode:checked),
+body:has(#reading-mode:checked) .post-content ul,
+body:has(#reading-mode:checked) .post-content ol{
+    background: #f4ecd8 !important;
+}
+
+body:has(#reading-mode:checked) .post-content p,
+body:has(#reading-mode:checked) .post-content h2,
+body:has(#reading-mode:checked) .post-content h3,
+body:has(#reading-mode:checked) .post-content blockquote,
+body:has(#reading-mode:checked) .post-content li {
+    color: #5b4636 !important;
+}
+/* Hide the floating button when checkbox is checked */
+body:has(#hide-toolbar:checked) .accessibility-button {
+    display: none;
+}
+
+body:has(#hide-toolbar:checked) .accessibility-panel {
+    display: none;
 }
 /* MIN WIDTH */
 @media all and (min-width: 768px) {

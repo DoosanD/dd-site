@@ -63,6 +63,7 @@ nav#site-navigation {
     padding: 5px 0;
     position: relative;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
 }
@@ -207,6 +208,7 @@ input.search-txt {
     padding: 5px 0;
     position: relative;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
 }
@@ -302,8 +304,8 @@ input.search-txt {
 
     .navbar-toggle.d-x-collapse.collapsed {
         border: 1px solid #FFF;
-        height: 50px;
-        width: 50px;
+        height: 45px;
+        width: 45px;
         margin: 0;
         transition: background-color 0.3s ease;
     }
