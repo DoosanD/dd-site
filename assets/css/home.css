@@ -53,6 +53,11 @@ body a {
 .dd-section {
 	padding-block: 40px;
 }
+.no-news {
+  font-size: 2.75rem;
+  color: #b03838;
+  text-align: center;
+}
 .typewriter {
   display:flex;
   justify-content: center;

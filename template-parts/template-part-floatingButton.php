@@ -1,12 +1,17 @@
 <?php
 /**
  * Floating Button template part
+ * 
+ * This template part is used to display a floating accessibility button on single posts and specific pages.
+ * 
+ * It includes options for adjusting text size, enabling high contrast mode, activating reading mode,
+ * and hiding the accessibility button itself.
  *
  * @package D_Theme
  */
 ?>
 
-<?php if (is_singular('post')): ?>
+<?php if (is_singular('post') or is_page(array(3))): ?>
     <div id="accessibility-toolbar">
 
         <!-- Main toggle -->

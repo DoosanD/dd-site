@@ -7,6 +7,7 @@
  * 
  * @package D_Theme
  */
+
 $current_lang = function_exists('pll_current_language') ? pll_current_language('slug') : 'en';
 $ACF = get_fields();
 get_header();
@@ -83,7 +84,7 @@ get_header();
 
             <?php }
         } else {
-            echo '<p class="no-post-p">No posts found.</p>';
+            echo '<p class="no-post-p">' . $ACF['blog_no_post_error'] . '</p>';
         }
 
         // Restore original post data
@@ -169,7 +170,7 @@ get_header();
 
                 <?php }
             } else {
-                echo '<p class="no-post-p">No posts found.</p>';
+                echo '<p class="no-post-p">' . $ACF['blog_no_post_error'] . '</p>';
             }
 
             // Restore original post data
@@ -207,7 +208,7 @@ get_header();
             }
 
             if (empty($rss_items)): ?>
-                <p class="no-news">No news available right now.</p>
+                <p class="no-post-p"><?= $ACF['rss_no_news_error'] ?></p>
             <?php else: ?>
 
 
@@ -275,10 +276,12 @@ get_header();
                     <h2 class="h2-global"><?= $ACF['newsletter_title'] ?></h2>
                 </div>
                 <form class="newsletter-form" action="#" method="post">
-                    <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address"
-                        required>
+                    <input type="email" name="email" class="newsletter-input"
+                        placeholder="<?= $ACF['newsletter_email_input'] ?>" required>
                     <div class="newsletter-btn-holder">
-                        <button type="submit" class="newsletter-btn"><span>Join The List</span></button>
+                        <button type="submit" class="newsletter-btn"><span>
+                                <?= $ACF['newsletter_button']; ?>
+                            </span></button>
                     </div>
                 </form>
             </div>

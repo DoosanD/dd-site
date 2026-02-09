@@ -1,6 +1,8 @@
 <?php
 /**
  * Sidebar template part
+ * 
+ * This template part is used to display the custom sidebar on specific pages and archive views.
  *
  * @package D_Theme
  */

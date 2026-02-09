@@ -41,6 +41,12 @@ $single_hero_backup = site_url() . '/wp-content/uploads/2024/04/Default_A_stunni
 		</div>
 	</section>
 
+	<!-- Floating Button Section  -->
+
+	<div class="posts-floating-button-holder">
+		<?php get_template_part('template-parts/template-part', 'floatingButton'); ?>
+	</div>
+
 </main><!-- #main -->
 
 <?php
