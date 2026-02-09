@@ -95,7 +95,7 @@
   letter-spacing: 3px;
 }
 .post-content h2 {
-  border-top: 1px solid #8627a3;
+  border-top: 2px solid #8627a3;
   font-size: 3.125rem;
   font-weight: 600;
   margin: 40px 0 20px;
@@ -118,12 +118,13 @@
 }
 .post-content blockquote {
   border-left: 4px solid #8627a3;
-  margin: 20px 0;
-  padding: 10px 15px;
+  margin: 25px 0;
+  padding: 30px 40px;
   font-style: italic;
   color:#000;
   background: #f2f2f2;
   border-radius: 0 10px 10px 0;
+  letter-spacing: 0.7px;
 }
 .post-content ul,
 .post-content ol {

@@ -1,6 +1,7 @@
 :root {
 	--PRIMARY-COLOR:#FFF;
 	--SECONDARY-COLOR:#000;
+  --FONT-PRIMARY-COLOR:#000;
 	--FONT-FAMILY:'Montserrat';
 }
 *, *::before, *::after {
@@ -45,7 +46,7 @@ body a {
   margin: 0;
 }
 .container {
-	/* ? */
+	/* Reset Bootstrap Container Padding */
 	padding-left: 0!important;
 	padding-right: 0!important;
 }
