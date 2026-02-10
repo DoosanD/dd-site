@@ -3,7 +3,7 @@
     --secondary-color: #000;
 }
 .custom-logo {
-  max-width: 120px;
+  max-width: 300px;
 }
 .--d-flex-center {
     display: flex;
@@ -181,6 +181,9 @@ input.search-txt {
   text-align: center;
   margin: 0 0 30px;
 }
+.footer-logo .custom-logo {
+    margin: 0;
+}
 .footer-content-list {
   list-style: none;
   display: flex;
@@ -350,5 +353,10 @@ input.search-txt {
 @media all and (min-width:768px) {
     #colophon {
         padding: 60px 15px;
+    }
+    .custom-logo {
+        max-width: 500px;
+        margin: 25px 0px 0;
+        padding: 0 15px;
     }
 }
